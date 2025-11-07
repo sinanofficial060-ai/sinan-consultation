@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>استشارات — Sinan Ahmed</title>
+  <meta name="description" content="احجز استشارة مجانية 15 دقيقة أو مدفوعة 60 دقيقة. أوقات مكة 6–11 مساءً. الدفع USDT (TRC20).">
+  <meta name="theme-color" content="#0F0F10">
+  <style>
+    :root{
+      --bg:#0f0f10; --card:#141416; --text:#f7f7f7; --muted:#b9b9b9;
+      --brand:#ff7a00; --ok:#22c55e; --stroke:rgba(255,255,255,.08);
+      --pill:#6d28d9; /* purple */
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;background:var(--bg);color:var(--text);line-height:1.6}
+    .wrap{max-width:980px;margin:0 auto;padding:24px}
+    header{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:8px 0 16px;border-bottom:1px solid var(--stroke)}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{width:40px;height:40px;border-radius:10px;background:linear-gradient(135deg,var(--brand),#ff9d3f);
+      display:grid;place-items:center;color:#111;font-weight:800;box-shadow:0 6px 14px rgba(255,122,0,.25), inset 0 0 0 1px rgba(255,255,255,.15)}
+    h1{margin:0;font-size:18px}
+    .cta, .ghost{display:inline-flex;gap:8px;align-items:center;border-radius:12px;padding:12px 16px;text-decoration:none;cursor:pointer}
+    .cta{background:var(--brand);color:#111;font-weight:800;box-shadow:0 10px 24px rgba(255,122,0,.25)}
+    .ghost{border:1px dashed var(--stroke);color:#fff;background:transparent}
+    main{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:22px}
+    @media (max-width:900px){main{grid-template-columns:1fr}}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,.02), transparent 40%),#141416;border:1px solid var(--stroke);border-radius:16px;padding:20px}
+    .badge{display:inline-block;padding:6px 10px;border-radius:999px;background:#111;border:1px solid var(--stroke);font-size:12px;color:var(--muted)}
+    .price{font-size:40px;font-weight:900} .mini{font-size:13px;color:var(--muted)}
+    .bullets{display:grid;gap:10px;margin:14px 0} .bullets li{list-style:none;display:flex;gap:10px}
+    .dot{width:10px;height:10px;border-radius:50%;background:var(--ok);margin-top:8px}
+    .sep{height:1px;background:var(--stroke);margin:14px 0}
+    .grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px} @media (max-width:520px){.grid2{grid-template-columns:1fr} .price{font-size:34px}}
+    .row{display:flex;gap:12px;flex-wrap:wrap}
+    input, select{background:#0c0c0d;border:1px solid var(--stroke);color:#fff;border-radius:10px;padding:10px 12px}
+    .usdt{background:#0c0c0d;border:1px solid var(--stroke);border-radius:14px;padding:12px;margin-top:12px}
+    code.addr{font-family:ui-monospace,Menlo,Consolas,monospace;background:#111;border:1px solid var(--stroke);padding:8px 10px;border-radius:10px;display:inline-block;direction:ltr}
+    .footer{margin-top:28px;color:var(--muted);font-size:12px;text-align:center}
+    .policy{margin-top:10px;color:var(--muted);font-size:12px}
+
+    /* pills for plan selection */
+    .pill{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--stroke);padding:8px 12px;border-radius:999px;}
+    .pill input{accent-color:#00aaff}
+    .pill.paid{background:linear-gradient(135deg, rgba(109,40,217,.35), rgba(109,40,217,.15)); border:1px solid rgba(109,40,217,.45)}
+    .pill.free{background:transparent}
+
+    /* floating WhatsApp */
+    .floating{position:fixed;left:16px;bottom:16px;background:#25D366;color:#111;font-weight:800;border:none;border-radius:999px;padding:12px 16px;display:flex;gap:10px;align-items:center;box-shadow:0 10px 24px rgba(37,211,102,.35);text-decoration:none;z-index:9}
+    .linklike{color:#fff;text-decoration:underline;cursor:pointer}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="logo">SA</div>
+        <div><h1>Sinan Ahmed</h1></div>
+      </div>
+      <a href="#book" class="cta">احجز الآن</a>
+    </header>
+
+    <main>
+      <!-- FREE PLAN -->
+      <section class="card">
+        <span class="badge">خيار مجاني</span>
+        <h2 style="margin:8px 0 6px">استشارة تمهيدية</h2>
+        <div class="mini">مكالمة تعارف سريعة عبر واتساب لفهم وضعك وتحديد أفضل خطوة لك.</div>
+        <div class="sep"></div>
+        <div class="price">0<span>$</span></div>
+        <ul class="bullets">
+          <li><span class="dot"></span><div>تعريف سريع بهدفك ومشاكلك الحالية</div></li>
+          <li><span class="dot" style="background:#ff7a00"></span><div>تحديد أول خطوة عملية تناسبك</div></li>
+        </ul>
+        <a href="#book" class="cta">ابدأ واتساب</a>
+        <div class="policy" style="margin-top:8px">الدفع عبر الكريبتو غير مطلوب لهذا الخيار.</div>
+      </section>
+
+      <!-- PAID PLAN -->
+      <section class="card">
+        <span class="badge">الخيار الكامل</span>
+        <h2 style="margin:8px 0 6px">استشارة مدفوعة — خارطة طريق</h2>
+        <div class="mini">جلسة مركّزة تحدد لك ما يجب فعله كمتداول — حل مشاكلك الحالية، تأسيس للمبتدئ، وخارطة طريق واضحة + متابعة.</div>
+        <div class="sep"></div>
+        <div class="price">49<span>$</span></div>
+        <ul class="bullets">
+          <li><span class="dot"></span><div>تشخيص دقيق لمشكلتك (نفسية / إدارة مخاطر / خطة / دخول)</div></li>
+          <li><span class="dot"></span><div>خارطة طريق واضحة من 3–5 خطوات قابلة للتنفيذ</div></li>
+          <li><span class="dot"></span><div>متابعة قصيرة بعد الجلسة + ملف PDF بالخلاصة</div></li>
+        </ul>
+        <div class="row" style="margin-top:10px">
+          <a href="#book" class="cta">احجز عبر واتساب</a>
+          <span class="ghost" id="show-pay1" style="align-items:center">طريقة الدفع: USDT (TRC20)</span>
+        </div>
+        <div id="pay-hint1" class="policy" style="display:none">اضغط لنسخ العنوان: <code class="addr">TNtQDpBAXXrrfSP7T2vgFLV3uvQFvQVUUf</code></div>
+        <div class="policy" style="margin-top:8px">الدفع عبر الكريبتو فقط (USDT — شبكة TRC20).</div>
+      </section>
+
+      <!-- BOOKING -->
+      <section class="card" id="book" style="grid-column:1/-1">
+        <h3 style="margin-top:0">الحجز السريع</h3>
+
+        <div class="row" style="gap:8px">
+          <label class="pill free"><input type="radio" name="plan" id="opt-free" checked> استشارة مجانية</label>
+          <label class="pill paid"><input type="radio" name="plan" id="opt-paid"> استشارة مدفوعة</label>
+        </div>
+
+        <div class="grid2" style="margin-top:10px">
+          <div>
+            <div class="mini">التاريخ (بتوقيت مكة)</div>
+            <input type="date" id="date">
+          </div>
+          <div>
+            <div class="mini">الوقت</div>
+            <select id="time">
+              <option value="18:00">6:00 مساءً</option>
+              <option value="19:00">7:00 مساءً</option>
+              <option value="20:00">8:00 مساءً</option>
+              <option value="21:00">9:00 مساءً</option>
+              <option value="22:00">10:00 مساءً</option>
+              <option value="23:00">11:00 مساءً</option>
+            </select>
+          </div>
+        </div>
+
+        <div style="margin-top:10px">
+          <div class="mini">الاسم (اختياري)</div>
+          <input id="name" placeholder="اكتب اسمك (اختياري)">
+        </div>
+
+        <div class="policy" style="margin-top:10px">
+          الدفع عبر الكريبتو فقط — <span id="show-pay2" class="linklike">USDT (TRC20)</span>.
+        </div>
+        <div id="pay-hint2" class="usdt" style="display:none">
+          <div class="mini">عنوان USDT (TRC20):</div>
+          <div style="margin-top:6px">
+            <code class="addr">TNtQDpBAXXrrfSP7T2vgFLV3uvQFvQVUUf</code>
+            <button class="ghost" id="copy-usdt" style="margin-inline-start:8px">نسخ العنوان</button>
+          </div>
+        </div>
+
+        <div class="sep"></div>
+
+        <div class="row">
+          <a id="wa-btn" class="cta" target="_blank" rel="noopener">إرسال رسالة واتساب</a>
+          <a id="tg-btn" class="ghost" href="https://t.me/sinanxch0" target="_blank" rel="noopener">إرسال رسالة تليجرام</a>
+          <a id="call-btn" class="ghost" href="tel:+447939893953">اتصال هاتفي</a>
+        </div>
+
+        <div class="policy">
+          • الأوقات: 6:00–11:00 مساءً (بتوقيت مكة).<br>
+          • يمكن الإلغاء أو إعادة الجدولة قبل الموعد بـ12 ساعة.<br>
+          • تُلغى الجلسة تلقائيًا إذا تأخر العميل أكثر من 30 دقيقة.
+        </div>
+      </section>
+    </main>
+
+    <p class="footer">هذه الصفحة مخصصة لحجز الاستشارات مباشرة عبر واتساب أو تليجرام.</p>
+  </div>
+
+  <a id="float-wa" class="floating" target="_blank" rel="noopener">واتساب مباشر</a>
+
+  <script>
+    const num = "447939893953";            // ثابت
+    const tg = "https://t.me/sinanxch0";             // ثابت
+    const usdtAddr = "TNtQDpBAXXrrfSP7T2vgFLV3uvQFvQVUUf";     // ثابت
+
+    const optFree = document.getElementById('opt-free');
+    const optPaid = document.getElementById('opt-paid');
+    const dateEl = document.getElementById('date');
+    const timeEl = document.getElementById('time');
+    const nameEl = document.getElementById('name');
+    const waBtn = document.getElementById('wa-btn');
+    const tgBtn = document.getElementById('tg-btn');
+    const copyUsdt = document.getElementById('copy-usdt');
+    const floatWa = document.getElementById('float-wa');
+    const showPay1 = document.getElementById('show-pay1');
+    const showPay2 = document.getElementById('show-pay2');
+    const payHint1 = document.getElementById('pay-hint1');
+    const payHint2 = document.getElementById('pay-hint2');
+
+    function todayISO(){ const d=new Date(); return d.toISOString().slice(0,10); }
+    dateEl.value = todayISO(); dateEl.min = todayISO();
+
+    function planWord(){ return optPaid.checked ? "استشارة مدفوعة — خارطة طريق" : "استشارة تمهيدية (مجانية)"; }
+
+    function buildText(){
+      const d = dateEl.value || todayISO();
+      const t = timeEl.value || "19:00";
+      const name = (nameEl.value || "").trim();
+      let base = `${planWord()}\nالتاريخ: ${d}\nالوقت: ${t}`;
+      if(name) base += `\nالاسم: ${name}`;
+      if(optPaid.checked){
+        base += `\nالدفع: USDT (TRC20)\nالعنوان: ${usdtAddr}\nسأرسل لقطة التحويل/TxID بعد الإرسال.`;
+      }
+      return base;
+    }
+
+    function refresh(){
+      const text = encodeURIComponent(buildText());
+      const wa = `https://wa.me/${num}?text=${text}`;
+      waBtn.href = wa;
+      floatWa.href = `https://wa.me/${num}`; // مباشر بدون نص
+      tgBtn.href = `${tg}?text=${text}`;
+    }
+
+    function toggle(el){ el.style.display = (el.style.display==='none' || !el.style.display)? 'block':'none'; }
+
+    [optFree,optPaid,dateEl,timeEl,nameEl].forEach(el=> el.addEventListener('change', refresh));
+    if(copyUsdt){ copyUsdt.addEventListener('click', ()=>{ navigator.clipboard.writeText(usdtAddr); copyUsdt.textContent='تم النسخ ✓'; setTimeout(()=>copyUsdt.textContent='نسخ العنوان',1100); }); }
+    if(showPay1){ showPay1.addEventListener('click', ()=> toggle(payHint1)); }
+    if(showPay2){ showPay2.addEventListener('click', ()=> toggle(payHint2)); }
+
+    refresh();
+  </script>
+</body>
+</html>
