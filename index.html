@@ -139,6 +139,9 @@
       header .brand{ margin-inline-start:6px; }
     }
 
+  
+    .note-red{ color:#ff4d4f; font-size:13px; margin-top:6px }
+    @media (max-width:520px){ .note-red{ font-size:12px } }
   </style>
 </head>
 <body>
@@ -199,11 +202,13 @@
           <label class="pill free" id="pill-free"><input type="radio" name="plan" id="opt-free" checked> استشارة مجانية</label>
           <label class="pill paid" id="pill-paid"><input type="radio" name="plan" id="opt-paid"> استشارة مدفوعة</label>
         </div>
+        <div class="note-red">ملاحظة: اختر التاريخ والوقت المناسبين لك. لا تُقبل الاستشارة في نفس اليوم — يجب أن يكون الحجز بعد 24 ساعة على الأقل.</div>
 
         <div class="grid2" style="margin-top:10px">
           <div>
-            <div class="mini">التاريخ (بتوقيت مكة)</div>
+            <div class="mini">التاريخ (بتوقيت مكة) <span class="note-red">— اختر تاريخًا بعد اليوم (الحجز بعد 24 ساعة على الأقل)</span></div>
             <input type="date" id="date">
+            <div class="note-red">لا يُسمح بالحجز بتاريخ اليوم أو أي تاريخ سابق.</div>
           </div>
           <div>
             <div class="mini">الوقت</div>
