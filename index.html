@@ -1,4 +1,4 @@
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="utf-8">
@@ -10,7 +10,7 @@
     :root{
       --bg:#0f0f10; --card:#141416; --text:#f7f7f7; --muted:#b9b9b9;
       --brand:#ff7a00; --ok:#22c55e; --stroke:rgba(255,255,255,.08);
-      --pill:#6d28d9; /* purple */
+      --pill:#6d28d9;
     }
     *{box-sizing:border-box}
     body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;background:var(--bg);color:var(--text);line-height:1.6}
@@ -38,14 +38,10 @@
     code.addr{font-family:ui-monospace,Menlo,Consolas,monospace;background:#111;border:1px solid var(--stroke);padding:8px 10px;border-radius:10px;display:inline-block;direction:ltr}
     .footer{margin-top:28px;color:var(--muted);font-size:12px;text-align:center}
     .policy{margin-top:10px;color:var(--muted);font-size:12px}
-
-    /* pills for plan selection */
     .pill{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--stroke);padding:8px 12px;border-radius:999px;}
     .pill input{accent-color:#00aaff}
     .pill.paid{background:linear-gradient(135deg, rgba(109,40,217,.35), rgba(109,40,217,.15)); border:1px solid rgba(109,40,217,.45)}
     .pill.free{background:transparent}
-
-    /* floating WhatsApp */
     .floating{position:fixed;left:16px;bottom:16px;background:#25D366;color:#111;font-weight:800;border:none;border-radius:999px;padding:12px 16px;display:flex;gap:10px;align-items:center;box-shadow:0 10px 24px rgba(37,211,102,.35);text-decoration:none;z-index:9}
     .linklike{color:#fff;text-decoration:underline;cursor:pointer}
   </style>
@@ -61,7 +57,6 @@
     </header>
 
     <main>
-      <!-- FREE PLAN -->
       <section class="card">
         <span class="badge">خيار مجاني</span>
         <h2 style="margin:8px 0 6px">استشارة تمهيدية</h2>
@@ -76,11 +71,13 @@
         <div class="policy" style="margin-top:8px">الدفع عبر الكريبتو غير مطلوب لهذا الخيار.</div>
       </section>
 
-      <!-- PAID PLAN -->
       <section class="card">
         <span class="badge">الخيار الكامل</span>
         <h2 style="margin:8px 0 6px">استشارة مدفوعة — خارطة طريق</h2>
-        <div class="mini">جلسة مركّزة تحدد لك ما يجب فعله كمتداول — حل مشاكلك الحالية، تأسيس للمبتدئ، وخارطة طريق واضحة + متابعة.</div>
+        <div class="mini">
+ابدأ صح، حلّ مشاكلك، وأنا معك خطوة خطوة.<br>
+<small>سأكون بجانبك حتى تصل لما تطمح له.</small>
+        </div>
         <div class="sep"></div>
         <div class="price">49<span>$</span></div>
         <ul class="bullets">
@@ -96,7 +93,6 @@
         <div class="policy" style="margin-top:8px">الدفع عبر الكريبتو فقط (USDT — شبكة TRC20).</div>
       </section>
 
-      <!-- BOOKING -->
       <section class="card" id="book" style="grid-column:1/-1">
         <h3 style="margin-top:0">الحجز السريع</h3>
 
@@ -161,9 +157,9 @@
   <a id="float-wa" class="floating" target="_blank" rel="noopener">واتساب مباشر</a>
 
   <script>
-    const num = "447939893953";            // ثابت
-    const tg = "https://t.me/sinanxch0";             // ثابت
-    const usdtAddr = "TNtQDpBAXXrrfSP7T2vgFLV3uvQFvQVUUf";     // ثابت
+    const num = "447939893953";
+    const tg = "https://t.me/sinanxch0";
+    const usdtAddr = "TNtQDpBAXXrrfSP7T2vgFLV3uvQFvQVUUf";
 
     const optFree = document.getElementById('opt-free');
     const optPaid = document.getElementById('opt-paid');
@@ -200,7 +196,7 @@
       const text = encodeURIComponent(buildText());
       const wa = `https://wa.me/${num}?text=${text}`;
       waBtn.href = wa;
-      floatWa.href = `https://wa.me/${num}`; // مباشر بدون نص
+      floatWa.href = `https://wa.me/${num}`;
       tgBtn.href = `${tg}?text=${text}`;
     }
 
