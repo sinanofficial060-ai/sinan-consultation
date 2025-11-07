@@ -96,6 +96,22 @@
       .js .card{opacity:1 !important; transform:none !important}
       body::before{opacity:0 !important}
     }
+  
+    /* ===== Raised/Elevation animations for cards ===== */
+    .card{ transition: transform .22s ease, box-shadow .22s ease; will-change: transform, box-shadow }
+    .card:hover, .card:focus-within{
+      transform: translateY(-4px);
+      box-shadow: 0 14px 28px rgba(0,0,0,.35), 0 0 0 1px var(--stroke) inset;
+    }
+    /* mobile/touch: use :active and JS 'pressed' class */
+    @media (hover:none){
+      .card:hover{ transform:none; box-shadow:none }
+      .card:active, .card.pressed{
+        transform: translateY(-3px);
+        box-shadow: 0 12px 22px rgba(0,0,0,.32), 0 0 0 1px var(--stroke) inset;
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -116,6 +132,7 @@
         <span class="badge">خيار مجاني</span>
         <h2 style="margin:8px 0 6px">استشارة تمهيدية</h2>
         <div class="mini">مكالمة تعارف سريعة عبر واتساب لفهم وضعك وتحديد أفضل خطوة لك.</div>
+        <div class="mini">🕒 مكالمة لمدة <b>15 دقيقة</b> (مجانية)</div>
         <div class="sep"></div>
         <div class="price">0<span>$</span></div>
         <ul class="bullets">
@@ -132,6 +149,7 @@
         <div class="mini">
           ابدأ صح، حلّ مشاكلك، وأنا معك خطوة خطوة.<br>
           <small>سأكون بجانبك حتى تصل لما تطمح له.</small>
+          <div class="mini">🕒 مكالمة مدتها <b>60 دقيقة</b> (مدفوعة)</div>
         </div>
         <div class="sep"></div>
         <div class="price">49<span>$</span></div>
@@ -358,6 +376,13 @@
       if(optPaid.checked){
         base += `\nالدفع: USDT (TRC20)\nالعنوان: ${usdtAddr}\nسأرسل لقطة التحويل/TxID بعد الإرسال.`;
       }
+      
+      // Append duration line without altering existing structure
+      if(optPaid.checked){
+        base += `\n🕒 المدة: مكالمة 60 دقيقة (مدفوعة)`;
+      } else {
+        base += `\n🕒 المدة: مكالمة 15 دقيقة (مجانية)`;
+      }
       return base;
     }
 
@@ -430,6 +455,14 @@
       });
     });
 
+
+    // Elevation press feedback on touch/any pointer
+    document.querySelectorAll('.card').forEach(card=>{
+      card.addEventListener('pointerdown', ()=> card.classList.add('pressed'));
+      ['pointerup','pointercancel','pointerleave'].forEach(ev=>{
+        card.addEventListener(ev, ()=> card.classList.remove('pressed'));
+      });
+    });
     refresh();
   </script>
 </body>
