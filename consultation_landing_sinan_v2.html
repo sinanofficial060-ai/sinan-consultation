@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>استشارات التداول — سنان أحمد</title>
+  <meta name="description" content="استشارة مجانية 15 دقيقة عبر واتساب أو جلسة مدفوعة 60 دقيقة بـ 30$. خارطة طريق واضحة ومتابعة.">
+  <meta property="og:title" content="استشارات التداول — سنان أحمد">
+  <meta property="og:description" content="استشارة مجانية 15 دقيقة أو جلسة مدفوعة 60 دقيقة بـ 30$. احجز الآن عبر واتساب.">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#0F0F10">
+  <style>
+    :root{
+      --bg:#0f0f10; --card:#141416; --text:#f7f7f7; --muted:#b9b9b9;
+      --brand:#ff7a00; --brand-2:#ffffff; --ok:#22c55e; --danger:#ef4444;
+      --stroke:rgba(255,255,255,.08);
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0; font-family: system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans";
+      background: radial-gradient(1200px 600px at 120% -10%, rgba(255,122,0,.12), transparent 60%),
+                  radial-gradient(900px 500px at -10% 110%, rgba(255,122,0,.08), transparent 60%),
+                  var(--bg);
+      color:var(--text); line-height:1.6;
+    }
+    .wrap{max-width:980px;margin:0 auto;padding:24px}
+    header{
+      display:flex;align-items:center;justify-content:space-between;gap:16px;
+      padding:8px 0 16px;border-bottom:1px solid var(--stroke);
+      position:sticky;top:0;background:rgba(15,15,16,.8);backdrop-filter:saturate(140%) blur(8px);z-index:5;
+    }
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{width:40px;height:40px;border-radius:10px;background:linear-gradient(135deg,var(--brand),#ff9d3f);
+      display:grid;place-items:center;color:#111;font-weight:800;
+      box-shadow:0 6px 14px rgba(255,122,0,.25), inset 0 0 0 1px rgba(255,255,255,.15);
+    }
+    .brand h1{font-size:18px;margin:0}
+    .tag{font-size:12px;color:var(--muted)}
+    .cta{display:inline-flex;gap:10px;align-items:center;background:var(--brand);color:#111;font-weight:800;border:none;
+      padding:12px 16px;border-radius:12px;cursor:pointer;box-shadow:0 10px 24px rgba(255,122,0,.25);
+      transition:transform .15s ease, box-shadow .2s ease;text-decoration:none}
+    .cta:hover{transform:translateY(-1px);box-shadow:0 12px 28px rgba(255,122,0,.3)}
+    main{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:22px}
+    @media (max-width:900px){main{grid-template-columns:1fr} header{position:static} }
+    .card{background:linear-gradient(180deg, rgba(255,255,255,.02), transparent 40%),var(--card);
+      border:1px solid var(--stroke); border-radius:16px;padding:20px}
+    .badge{display:inline-block;padding:6px 10px;border-radius:999px;background:#111;border:1px solid var(--stroke);font-size:12px;color:var(--muted)}
+    .price{font-size:40px;font-weight:900}
+    .mini{font-size:13px;color:var(--muted)}
+    .bullets{display:grid;gap:10px;margin:14px 0}
+    .bullets li{list-style:none;display:flex;gap:10px;align-items:flex-start}
+    .dot{width:10px;height:10px;border-radius:50%;background:var(--ok);margin-top:9px}
+    .muted{color:var(--muted)}
+    .sep{height:1px;background:var(--stroke);margin:14px 0}
+    .row{display:flex;gap:12px;flex-wrap:wrap}
+    .grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    @media (max-width:520px){.grid2{grid-template-columns:1fr} .price{font-size:34px} }
+    .input{background:#0c0c0d;border:1px solid var(--stroke);color:var(--text);padding:12px 14px;border-radius:12px;min-width:220px;flex:1}
+    .copy{background:#111;border:1px solid var(--stroke);color:var(--text);padding:10px 12px;border-radius:10px;cursor:pointer}
+    .ghost{background:transparent;color:var(--brand-2);border:1px dashed var(--stroke);padding:12px 14px;border-radius:12px;cursor:pointer;text-decoration:none}
+    .accent{color:var(--brand)}
+    .footer{margin-top:30px;font-size:12px;color:var(--muted);text-align:center}
+    .floating{position:fixed;left:16px;bottom:16px;z-index:9;background:#25D366;color:#111;font-weight:800;border:none;border-radius:999px;
+      padding:12px 16px;display:flex;gap:10px;align-items:center;box-shadow:0 10px 24px rgba(37,211,102,.35);text-decoration:none}
+    .choice{display:flex;gap:10px;align-items:center}
+    .plan{display:flex;gap:10px;align-items:baseline}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="logo">SA</div>
+        <div>
+          <h1>سنان أحمد</h1>
+          <div class="tag">استشارات تداول — XAU/USD | ICT | Risk</div>
+        </div>
+      </div>
+      <a href="#book" class="cta">احجز الآن</a>
+    </header>
+
+    <main>
+      <!-- FREE PLAN -->
+      <section class="card">
+        <span class="badge">خيار مجاني</span>
+        <h2 style="margin:8px 0 6px">استشارة تمهيدية</h2>
+        <div class="muted">مكالمة تعارف سريعة عبر واتساب لفهم وضعك وتحديد أفضل خطوة لك.</div>
+        <div class="sep"></div>
+        <div class="plan">
+          <div class="price">0<span class="accent">$</span></div>
+          <div class="mini">/ 15 دقيقة</div>
+        </div>
+        <ul class="bullets">
+          <li><span class="dot"></span><div>تعريف سريع بهدفك ومشاكلك الحالية</div></li>
+          <li><span class="dot" style="background:var(--brand)"></span><div>تحديد أول خطوة عملية تناسبك</div></li>
+        </ul>
+        <a id="start-free" class="cta" target="_blank" rel="noopener">ابدأ واتساب</a>
+      </section>
+
+      <!-- PAID PLAN -->
+      <section class="card">
+        <span class="badge">الخيار الكامل</span>
+        <h2 style="margin:8px 0 6px">استشارة مدفوعة — خارطة طريق</h2>
+        <div class="muted">جلسة مركّزة تحدد لك ما يجب فعله كمتداول — حل مشاكلك الحالية، تأسيس المبتدئ، وخارطة طريق واضحة + متابعة.</div>
+        <div class="sep"></div>
+        <div class="plan">
+          <div class="price">30<span class="accent">$</span></div>
+          <div class="mini">/ 60 دقيقة</div>
+        </div>
+        <ul class="bullets">
+          <li><span class="dot"></span><div>تشخيص دقيق لمشكلتك (نفسية / إدارة مخاطر / خطة / دخول)</div></li>
+          <li><span class="dot"></span><div>خارطة طريق واضحة من 3–5 خطوات قابلة للتنفيذ</div></li>
+          <li><span class="dot"></span><div>متابعة قصيرة بعد الجلسة + ملف PDF بالخلاصة</div></li>
+        </ul>
+        <div class="grid2">
+          <a id="start-paid" class="cta" target="_blank" rel="noopener">احجز عبر واتساب</a>
+          <a id="pay-link" class="ghost" target="_blank" rel="noopener">رابط الدفع (Stripe/PayPal/USDT)</a>
+        </div>
+      </section>
+
+      <!-- BOOKING -->
+      <section class="card" id="book" style="grid-column:1/-1">
+        <h3 style="margin-top:0">الحجز السريع</h3>
+        <div class="choice">
+          <input type="radio" id="opt-free" name="plan" checked>
+          <label for="opt-free">استشارة مجانية 15 دقيقة</label>
+        </div>
+        <div class="choice">
+          <input type="radio" id="opt-paid" name="plan">
+          <label for="opt-paid">استشارة مدفوعة 60 دقيقة — 30$</label>
+        </div>
+
+        <div class="sep"></div>
+
+        <div class="grid2">
+          <div>
+            <div class="mini">رقمك لواتساب (أرقام فقط مع كود الدولة)</div>
+            <input class="input" id="phone" placeholder="مثال: 905555555555 (تركيا)" value="905555555555">
+            <div class="row" style="margin-top:10px">
+              <button class="cta" id="open-wa">أرسل رسالة واتساب</button>
+              <button class="copy" id="copy-num">نسخ الرقم</button>
+            </div>
+          </div>
+          <div>
+            <div class="mini">رقم الاستشارات (يظهر للعملاء)</div>
+            <input class="input" id="public-number" value="+90 555 555 55 55">
+            <div class="row" style="margin-top:10px">
+              <button class="copy" id="copy-public">نسخ</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="sep"></div>
+
+        <div class="mini">روابط الدفع (اختياري — غيّرها بروابطك)</div>
+        <div class="row">
+          <a class="cta" id="pay-stripe" href="#" target="_blank" rel="noopener">Stripe</a>
+          <a class="ghost" id="pay-paypal" href="#" target="_blank" rel="noopener">PayPal</a>
+          <a class="ghost" id="pay-usdt" href="#" target="_blank" rel="noopener">USDT (TRC20)</a>
+        </div>
+      </section>
+    </main>
+
+    <p class="footer">صفحة واحدة فقط — عدّل الرقم/الروابط واحفظ. تعمل فورًا عند رفعها على أي استضافة.</p>
+  </div>
+
+  <a id="float-wa" class="floating" href="#" target="_blank" rel="noopener">واتساب مباشر</a>
+
+  <script>
+    const phone = document.getElementById('phone');
+    const openWa = document.getElementById('open-wa');
+    const floatWa = document.getElementById('float-wa');
+    const copyNum = document.getElementById('copy-num');
+    const copyPublic = document.getElementById('copy-public');
+    const publicNumber = document.getElementById('public-number');
+    const optFree = document.getElementById('opt-free');
+    const optPaid = document.getElementById('opt-paid');
+    const startFree = document.getElementById('start-free');
+    const startPaid = document.getElementById('start-paid');
+    const payLink = document.getElementById('pay-link');
+
+    // ضع روابط الدفع الخاصة بك هنا (اختياري):
+    const stripeUrl = '#';
+    const paypalUrl = '#';
+    const usdtUrl   = '#';
+
+    document.getElementById('pay-stripe').href = stripeUrl;
+    document.getElementById('pay-paypal').href = paypalUrl;
+    document.getElementById('pay-usdt').href   = usdtUrl;
+    payLink.href = stripeUrl !== '#' ? stripeUrl : '#';
+
+    function waText(){
+      if(optPaid.checked){
+        return 'مرحباً سنان، أريد حجز استشارة مدفوعة لمدة 60 دقيقة (30$).\n- اسمي:\n- خبرتي بالتداول:\n- مشكلتي الرئيسية الآن:\n- أفضل وقت للجلسة:';
+      } else {
+        return 'مرحباً سنان، أريد استشارة مجانية لمدة 15 دقيقة للتعارف وتحديد الخطوة التالية.\n- اسمي:\n- خبرتي بالتداول:\n- سؤالي السريع:';
+      }
+    }
+    function waHref(){
+      const num = (phone.value || '').replace(/[^0-9]/g, '');
+      const text = encodeURIComponent(waText());
+      const href = num ? `https://wa.me/${num}?text=${text}` : '#';
+      [openWa, floatWa, startFree, startPaid].forEach(a => a && (a.href = href));
+    }
+    function init(){ waHref(); }
+    init();
+
+    phone.addEventListener('input', waHref);
+    optFree.addEventListener('change', waHref);
+    optPaid.addEventListener('change', waHref);
+
+    copyNum.addEventListener('click', ()=>{ navigator.clipboard.writeText(phone.value); copyNum.innerText='تم النسخ ✓'; setTimeout(()=>copyNum.innerText='نسخ الرقم',1200); });
+    copyPublic.addEventListener('click', ()=>{ navigator.clipboard.writeText(publicNumber.value); copyPublic.innerText='تم النسخ ✓'; setTimeout(()=>copyPublic.innerText='نسخ',1200); });
+  </script>
+</body>
+</html>
