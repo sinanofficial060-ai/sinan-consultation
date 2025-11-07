@@ -10,22 +10,47 @@
     :root{
       --bg:#0f0f10; --card:#141416; --text:#f7f7f7; --muted:#b9b9b9;
       --brand:#ff7a00; --ok:#22c55e; --stroke:rgba(255,255,255,.08);
-      --pill:#6d28d9;
+      --pill:#6d28d9; --accent:#00aaff;
     }
     *{box-sizing:border-box}
-    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;background:var(--bg);color:var(--text);line-height:1.6}
-    .wrap{max-width:980px;margin:0 auto;padding:24px}
-    header{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:8px 0 16px;border-bottom:1px solid var(--stroke)}
+    html{scroll-behavior:smooth}
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;background:var(--bg);color:var(--text);line-height:1.6;
+      animation:fadeIn .6s ease both}
+    @keyframes fadeIn{from{opacity:0; transform:translateY(6px)}to{opacity:1; transform:none}}
+
+    /* spotlight mouse (disabled on touch) */
+    body::before{content:""; position:fixed; inset:0; pointer-events:none;
+      background:radial-gradient(220px 220px at var(--mx,-1000px) var(--my,-1000px),
+                 rgba(255,255,255,.06), rgba(255,255,255,0) 60%);
+      mix-blend-mode:screen; opacity:.65; transition:opacity .2s}
+    @media (hover:none){ body::before{opacity:0} }
+
+    .wrap{max-width:980px;margin:0 auto;padding:24px;position:relative}
+    header{display:flex;align-items:center;justify-content:space-between;gap:16px;position:relative;z-index:2;padding:8px 0 12px}
     .brand{display:flex;align-items:center;gap:12px}
     .logo{width:40px;height:40px;border-radius:10px;background:linear-gradient(135deg,var(--brand),#ff9d3f);
       display:grid;place-items:center;color:#111;font-weight:800;box-shadow:0 6px 14px rgba(255,122,0,.25), inset 0 0 0 1px rgba(255,255,255,.15)}
     h1{margin:0;font-size:18px}
-    .cta, .ghost{display:inline-flex;gap:8px;align-items:center;border-radius:12px;padding:12px 16px;text-decoration:none;cursor:pointer}
+
+    .cta, .ghost{
+      display:inline-flex;gap:8px;align-items:center;border-radius:12px;padding:12px 16px;text-decoration:none;cursor:pointer;
+      transition:transform .18s ease, box-shadow .18s ease, background .18s ease, color .18s ease;
+      user-select:none;
+    }
     .cta{background:var(--brand);color:#111;font-weight:800;box-shadow:0 10px 24px rgba(255,122,0,.25)}
+    .cta:hover{transform:translateY(-2px); box-shadow:0 16px 30px rgba(255,122,0,.35)}
+    .cta:active{transform:translateY(0); box-shadow:0 8px 18px rgba(255,122,0,.25)}
     .ghost{border:1px dashed var(--stroke);color:#fff;background:transparent}
+    .ghost:hover{transform:translateY(-1px)}
+
     main{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:22px}
     @media (max-width:900px){main{grid-template-columns:1fr}}
+
+    /* cards */
     .card{background:linear-gradient(180deg, rgba(255,255,255,.02), transparent 40%),#141416;border:1px solid var(--stroke);border-radius:16px;padding:20px}
+    .js .card{opacity:0; transform:translateY(12px); transition:opacity .6s ease, transform .6s ease}
+    .js .card.revealed{opacity:1; transform:none}
+
     .badge{display:inline-block;padding:6px 10px;border-radius:999px;background:#111;border:1px solid var(--stroke);font-size:12px;color:var(--muted)}
     .price{font-size:40px;font-weight:900} .mini{font-size:13px;color:var(--muted)}
     .bullets{display:grid;gap:10px;margin:14px 0} .bullets li{list-style:none;display:flex;gap:10px}
@@ -38,12 +63,39 @@
     code.addr{font-family:ui-monospace,Menlo,Consolas,monospace;background:#111;border:1px solid var(--stroke);padding:8px 10px;border-radius:10px;display:inline-block;direction:ltr}
     .footer{margin-top:28px;color:var(--muted);font-size:12px;text-align:center}
     .policy{margin-top:10px;color:var(--muted);font-size:12px}
-    .pill{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--stroke);padding:8px 12px;border-radius:999px;}
-    .pill input{accent-color:#00aaff}
+
+    .pill{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--stroke);padding:10px 14px;border-radius:999px;transition:all .25s ease; position:relative; isolation:isolate}
+    .pill input{accent-color:var(--accent)}
     .pill.paid{background:linear-gradient(135deg, rgba(109,40,217,.35), rgba(109,40,217,.15)); border:1px solid rgba(109,40,217,.45)}
     .pill.free{background:transparent}
+    .pill.selected{box-shadow:0 0 0 2px rgba(0,170,255,.35), 0 0 22px rgba(0,170,255,.18) inset; transform:translateY(-1px)}
+    .pill.selected::after{content:""; position:absolute; inset:-3px; border-radius:999px; z-index:-1;
+      background:radial-gradient(60% 120% at 50% 20%, rgba(0,170,255,.12), transparent 70%); animation:pulse 1.8s ease-in-out infinite}
+    @keyframes pulse{0%,100%{opacity:.4; filter:blur(0)}50%{opacity:.85; filter:blur(1px)}}
+
     .floating{position:fixed;left:16px;bottom:16px;background:#25D366;color:#111;font-weight:800;border:none;border-radius:999px;padding:12px 16px;display:flex;gap:10px;align-items:center;box-shadow:0 10px 24px rgba(37,211,102,.35);text-decoration:none;z-index:9}
     .linklike{color:#fff;text-decoration:underline;cursor:pointer}
+
+    /* FAQ styles */
+    .faq{grid-column:1/-1}
+    .faq h3{margin:0 0 10px}
+    .qa{background:#141416;border:1px solid var(--stroke);border-radius:14px;overflow:hidden}
+    .qa + .qa{margin-top:10px}
+    .qbtn{width:100%;text-align:inherit;background:#141416;color:#fff;border:none;padding:16px;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:12px}
+    .qbtn:hover{background:#17181a}
+    .icon{width:24px;height:24px;border-radius:6px;background:#0f0f10;border:1px solid var(--stroke);display:grid;place-items:center;font-weight:700;color:#bbb}
+    .ans{max-height:0;overflow:hidden;transition:max-height .35s ease, padding .35s ease;padding:0 16px}
+    .qa.open .ans{max-height:500px;padding:12px 16px 16px}
+    .ans p{margin:0;color:#bdbdbd}
+    .faq-foot{margin-top:12px;color:#bdbdbd;font-size:13px}
+    .faq-foot a{color:#fff}
+
+    @media (prefers-reduced-motion:reduce){
+      *{animation:none !important; transition:none !important}
+      html{scroll-behavior:auto}
+      .js .card{opacity:1 !important; transform:none !important}
+      body::before{opacity:0 !important}
+    }
   </style>
 </head>
 <body>
@@ -53,7 +105,10 @@
         <div class="logo">SA</div>
         <div><h1>Sinan Ahmed</h1></div>
       </div>
-      <a href="#book" class="cta">احجز الآن</a>
+      <div class="row">
+        <a href="#book" class="cta">احجز الآن</a>
+        <a href="#faq" class="ghost">الأسئلة الشائعة</a>
+      </div>
     </header>
 
     <main>
@@ -67,7 +122,7 @@
           <li><span class="dot"></span><div>تعريف سريع بهدفك ومشاكلك الحالية</div></li>
           <li><span class="dot" style="background:#ff7a00"></span><div>تحديد أول خطوة عملية تناسبك</div></li>
         </ul>
-        <a href="#book" class="cta">ابدأ واتساب</a>
+        <a href="#book" class="cta" id="cta-free">ابدأ واتساب</a>
         <div class="policy" style="margin-top:8px">الدفع عبر الكريبتو غير مطلوب لهذا الخيار.</div>
       </section>
 
@@ -75,8 +130,8 @@
         <span class="badge">الخيار الكامل</span>
         <h2 style="margin:8px 0 6px">استشارة مدفوعة — خارطة طريق</h2>
         <div class="mini">
-ابدأ صح، حلّ مشاكلك، وأنا معك خطوة خطوة.<br>
-<small>سأكون بجانبك حتى تصل لما تطمح له.</small>
+          ابدأ صح، حلّ مشاكلك، وأنا معك خطوة خطوة.<br>
+          <small>سأكون بجانبك حتى تصل لما تطمح له.</small>
         </div>
         <div class="sep"></div>
         <div class="price">49<span>$</span></div>
@@ -86,7 +141,7 @@
           <li><span class="dot"></span><div>متابعة قصيرة بعد الجلسة + ملف PDF بالخلاصة</div></li>
         </ul>
         <div class="row" style="margin-top:10px">
-          <a href="#book" class="cta">احجز عبر واتساب</a>
+          <a href="#book" class="cta" id="cta-paid">احجز عبر واتساب</a>
           <span class="ghost" id="show-pay1" style="align-items:center">طريقة الدفع: USDT (TRC20)</span>
         </div>
         <div id="pay-hint1" class="policy" style="display:none">اضغط لنسخ العنوان: <code class="addr">TNtQDpBAXXrrfSP7T2vgFLV3uvQFvQVUUf</code></div>
@@ -97,8 +152,8 @@
         <h3 style="margin-top:0">الحجز السريع</h3>
 
         <div class="row" style="gap:8px">
-          <label class="pill free"><input type="radio" name="plan" id="opt-free" checked> استشارة مجانية</label>
-          <label class="pill paid"><input type="radio" name="plan" id="opt-paid"> استشارة مدفوعة</label>
+          <label class="pill free" id="pill-free"><input type="radio" name="plan" id="opt-free" checked> استشارة مجانية</label>
+          <label class="pill paid" id="pill-paid"><input type="radio" name="plan" id="opt-paid"> استشارة مدفوعة</label>
         </div>
 
         <div class="grid2" style="margin-top:10px">
@@ -149,6 +204,97 @@
           • تُلغى الجلسة تلقائيًا إذا تأخر العميل أكثر من 30 دقيقة.
         </div>
       </section>
+
+      <!-- FAQ -->
+      <section id="faq" class="faq card">
+        <h3>الأسئلة الشائعة</h3>
+
+        <div class="qa">
+          <button class="qbtn" aria-expanded="false">
+            ما نوع الدعم الذي تقدّمه؟
+            <span class="icon">+</span>
+          </button>
+          <div class="ans"><p>مكالمات واتساب/تيليجرام + خطة طريق عملية قابلة للتنفيذ + متابعة نصية قصيرة بعد الجلسة ضمن أوقات العمل (6–11 مساءً بتوقيت مكة).</p></div>
+        </div>
+
+        <div class="qa">
+          <button class="qbtn" aria-expanded="false">
+            ما الفرق بين التوجيه الشخصي والمتابعة والمشاهدة فقط؟
+            <span class="icon">+</span>
+          </button>
+          <div class="ans"><p><b>التوجيه الشخصي:</b> جلسة 60 دقيقة مع تشخيص وخطة 3–5 خطوات + ملف PDF + متابعة نصية قصيرة. <br><b>المتابعة:</b> رسائل لاحقة مختصرة لتحديث التقدم وتعديلات بسيطة — ليست جلسة جديدة. <br><b>المشاهدة فقط:</b> تعلّم عام من يوتيوب بدون تخصيص أو متابعة فردية.</p></div>
+        </div>
+
+        <div class="qa">
+          <button class="qbtn" aria-expanded="false">
+            هل توجد متابعة مستمرة معي؟
+            <span class="icon">+</span>
+          </button>
+          <div class="ans"><p>نعم، بعد الجلسة المدفوعة تحصل على متابعة نصية قصيرة لمدة 7 أيام للتأكد من تنفيذ الخطوات والإجابة على الاستفسارات السريعة.</p></div>
+        </div>
+
+        <div class="qa">
+          <button class="qbtn" aria-expanded="false">
+            هل أقدر أحقق دخل فعلاً من التداول؟
+            <span class="icon">+</span>
+          </button>
+          <div class="ans"><p>ممكن، لكن ليس وعدًا. النجاح يعتمد على التزامك بالخطة، إدارة المخاطر، وسجل ممارسة منضبط. دوري أن أختصر الطريق وأبني لك إطارًا عمليًا.</p></div>
+        </div>
+
+        <div class="qa">
+          <button class="qbtn" aria-expanded="false">
+            لمن هذه الاستشارة؟
+            <span class="icon">+</span>
+          </button>
+          <div class="ans"><p>للمبتدئ الذي يريد بداية صحيحة وخارطة طريق واضحة، وللمتوسط الذي يواجه مشاكل في الانضباط، إدارة المخاطر، أو آلية الدخول.</p></div>
+        </div>
+
+        <div class="qa">
+          <button class="qbtn" aria-expanded="false">
+            ما الأسواق التي أعمل عليها؟
+            <span class="icon">+</span>
+          </button>
+          <div class="ans"><p>فوركس وكريبتو فقط. نرتّب الخطة حسب السوق الذي يناسبك.</p></div>
+        </div>
+
+        <div class="qa">
+          <button class="qbtn" aria-expanded="false">
+            ماذا سأحصل عليه في الجلسة المدفوعة؟
+            <span class="icon">+</span>
+          </button>
+          <div class="ans"><p>تشخيص واضح لمشكلتك، خارطة طريق من 3–5 خطوات قابلة للتنفيذ، تنظيم مهامك اليومية/الأسبوعية، ملف PDF بالخلاصة، ومتابعة نصية قصيرة بعد الجلسة.</p></div>
+        </div>
+
+        <div class="qa">
+          <button class="qbtn" aria-expanded="false">
+            كيف أدفع؟
+            <span class="icon">+</span>
+          </button>
+          <div class="ans"><p>الدفع عبر الكريبتو فقط <b>USDT (TRC20)</b>. يظهر العنوان داخل صفحة الحجز ويمكنك نسخه بنقرة واحدة.</p></div>
+        </div>
+
+        <div class="qa">
+          <button class="qbtn" aria-expanded="false">
+            بأي لغة تتم الجلسة؟
+            <span class="icon">+</span>
+          </button>
+          <div class="ans"><p>العربية فقط.</p></div>
+        </div>
+
+        <div class="qa">
+          <button class="qbtn" aria-expanded="false">
+            ما الخصوصية؟
+            <span class="icon">+</span>
+          </button>
+          <div class="ans"><p>كل ما تشاركه يبقى سريًا ويُستخدم فقط لغرض الاستشارة، ولن يُشارك مع أي طرف.</p></div>
+        </div>
+
+        <div class="faq-foot">لم تجد سؤالك؟ لا تتردد في التواصل عبر
+          <a href="https://wa.me/447939893953" target="_blank" rel="noopener">واتساب</a> أو
+          <a href="https://t.me/sinanxch0" target="_blank" rel="noopener">تيليجرام</a>.
+        </div>
+      </section>
+
     </main>
 
     <p class="footer">هذه الصفحة مخصصة لحجز الاستشارات مباشرة عبر واتساب أو تليجرام.</p>
@@ -157,12 +303,25 @@
   <a id="float-wa" class="floating" target="_blank" rel="noopener">واتساب مباشر</a>
 
   <script>
+    // Enable JS class for reveal animation
+    document.documentElement.classList.add('js');
+
+    // spotlight mouse (desktop)
+    document.addEventListener('mousemove', (e)=>{
+      document.documentElement.style.setProperty('--mx', e.clientX + 'px');
+      document.documentElement.style.setProperty('--my', e.clientY + 'px');
+    });
+
+    // --------- إعدادات عامة ---------
     const num = "447939893953";
     const tg = "https://t.me/sinanxch0";
     const usdtAddr = "TNtQDpBAXXrrfSP7T2vgFLV3uvQFvQVUUf";
 
     const optFree = document.getElementById('opt-free');
     const optPaid = document.getElementById('opt-paid');
+    const pillFree = document.getElementById('pill-free');
+    const pillPaid = document.getElementById('pill-paid');
+
     const dateEl = document.getElementById('date');
     const timeEl = document.getElementById('time');
     const nameEl = document.getElementById('name');
@@ -198,6 +357,8 @@
       waBtn.href = wa;
       floatWa.href = `https://wa.me/${num}`;
       tgBtn.href = `${tg}?text=${text}`;
+      pillFree.classList.toggle('selected', optFree.checked);
+      pillPaid.classList.toggle('selected', optPaid.checked);
     }
 
     function toggle(el){ el.style.display = (el.style.display==='none' || !el.style.display)? 'block':'none'; }
@@ -206,6 +367,58 @@
     if(copyUsdt){ copyUsdt.addEventListener('click', ()=>{ navigator.clipboard.writeText(usdtAddr); copyUsdt.textContent='تم النسخ ✓'; setTimeout(()=>copyUsdt.textContent='نسخ العنوان',1100); }); }
     if(showPay1){ showPay1.addEventListener('click', ()=> toggle(payHint1)); }
     if(showPay2){ showPay2.addEventListener('click', ()=> toggle(payHint2)); }
+
+    // --------- تمرير تلقائي لقسم الحجز عند تحميل الصفحة ---------
+    window.addEventListener('load', () => {
+      if (!location.hash) {
+        const b = document.getElementById('book');
+        if (b && b.scrollIntoView) { b.scrollIntoView({behavior:'smooth'}); }
+      }
+    });
+
+    // --------- تبديل الخطة عند الضغط على الأزرار في البطاقات ---------
+    const ctaPaid = document.getElementById('cta-paid');
+    const ctaFree2 = document.getElementById('cta-free');
+    if (ctaPaid) { ctaPaid.addEventListener('click', ()=>{ optPaid.checked = true; optFree.checked = false; playConfirm(); refresh(); }); }
+    if (ctaFree2) { ctaFree2.addEventListener('click', ()=>{ optFree.checked = true; optPaid.checked = false; refresh(); }); }
+
+    // --------- صوت تأكيد عند اختيار "مدفوعة" ---------
+    let audioCtx = null;
+    function playConfirm(){
+      try{
+        if (!audioCtx) audioCtx = new (window.AudioContext||window.webkitAudioContext)();
+        const o = audioCtx.createOscillator();
+        const g = audioCtx.createGain();
+        o.type = 'sine'; o.frequency.value = 880;
+        g.gain.setValueAtTime(0.0001, audioCtx.currentTime);
+        g.gain.exponentialRampToValueAtTime(0.22, audioCtx.currentTime + 0.02);
+        g.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.20);
+        o.connect(g); g.connect(audioCtx.destination);
+        o.start(); o.stop(audioCtx.currentTime + 0.22);
+      }catch(e){}
+    }
+    optPaid.addEventListener('change', ()=>{ if (optPaid.checked) playConfirm(); });
+
+    // --------- Scroll Reveal (with fallback) ---------
+    document.documentElement.classList.add('js');
+    function revealAll(){ document.querySelectorAll('.card').forEach(el=> el.classList.add('revealed')); }
+    if ('IntersectionObserver' in window){
+      const observer = new IntersectionObserver((entries)=>{
+        entries.forEach(entry=>{ if(entry.isIntersecting){ entry.target.classList.add('revealed'); observer.unobserve(entry.target);} });
+      }, {root:null, rootMargin:"0px 0px -10% 0px", threshold:0.1});
+      document.querySelectorAll('.card').forEach(el=> observer.observe(el));
+      setTimeout(()=>{ const anyHidden = Array.from(document.querySelectorAll('.card')).some(el=> !el.classList.contains('revealed')); if(anyHidden) revealAll(); }, 2000);
+    } else { revealAll(); }
+
+    // --------- FAQ accordion ---------
+    document.querySelectorAll('.qa .qbtn').forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        const qa = btn.parentElement;
+        const open = qa.classList.toggle('open');
+        btn.setAttribute('aria-expanded', open);
+        btn.querySelector('.icon').textContent = open ? '−' : '+';
+      });
+    });
 
     refresh();
   </script>
