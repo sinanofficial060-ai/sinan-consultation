@@ -48,10 +48,12 @@
 
     /* cards */
     .card{background:linear-gradient(180deg, rgba(255,255,255,.02), transparent 40%),#141416;border:1px solid var(--stroke);border-radius:16px;padding:20px}
+    /* reveal animation with fallback */
+    .card{opacity:1; transform:none}
     .js .card{opacity:0; transform:translateY(12px); transition:opacity .6s ease, transform .6s ease}
     .js .card.revealed{opacity:1; transform:none}
 
-    .badge{display:inline-block;padding:6px 10px;border-radius:999px;background:#111;border:1px solid var(--stroke);font-size:12px;color:var(--muted)}
+    .badge{display:inline-block;padding:6px 10px;border-radius:999px;background:#111;border:1px solid var(--stroke);font-size:12px;color:#muted}
     .price{font-size:40px;font-weight:900} .mini{font-size:13px;color:var(--muted)}
     .bullets{display:grid;gap:10px;margin:14px 0} .bullets li{list-style:none;display:flex;gap:10px}
     .dot{width:10px;height:10px;border-radius:50%;background:var(--ok);margin-top:8px}
@@ -76,6 +78,21 @@
     .floating{position:fixed;left:16px;bottom:16px;background:#25D366;color:#111;font-weight:800;border:none;border-radius:999px;padding:12px 16px;display:flex;gap:10px;align-items:center;box-shadow:0 10px 24px rgba(37,211,102,.35);text-decoration:none;z-index:9}
     .linklike{color:#fff;text-decoration:underline;cursor:pointer}
 
+    /* --- interactive lift for cards (hover/touch/focus) --- */
+    .card{
+      transition: transform .22s ease, box-shadow .22s ease, opacity .6s ease;
+      will-change: transform, box-shadow;
+    }
+    .card:hover,
+    .card:focus-within,
+    .card.card-active{
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px rgba(0,0,0,.35), 0 0 0 1px rgba(255,255,255,.03) inset;
+    }
+    @media (prefers-reduced-motion:reduce){
+      .card:hover, .card:focus-within, .card.card-active{ transform:none; box-shadow:none; }
+    }
+
     /* FAQ styles */
     .faq{grid-column:1/-1}
     .faq h3{margin:0 0 10px}
@@ -96,20 +113,30 @@
       .js .card{opacity:1 !important; transform:none !important}
       body::before{opacity:0 !important}
     }
-  
-    /* ===== Raised/Elevation animations for cards ===== */
-    .card{ transition: transform .22s ease, box-shadow .22s ease; will-change: transform, box-shadow }
-    .card:hover, .card:focus-within{
-      transform: translateY(-4px);
-      box-shadow: 0 14px 28px rgba(0,0,0,.35), 0 0 0 1px var(--stroke) inset;
+
+    /* === Header buttons: mobile sizing + glow effect === */
+    header .row{ gap:10px; }
+    .cta, .ghost{
+      position:relative;
+      overflow:hidden; /* for subtle inner glow mask */
     }
-    /* mobile/touch: use :active and JS 'pressed' class */
-    @media (hover:none){
-      .card:hover{ transform:none; box-shadow:none }
-      .card:active, .card.pressed{
-        transform: translateY(-3px);
-        box-shadow: 0 12px 22px rgba(0,0,0,.32), 0 0 0 1px var(--stroke) inset;
+    /* glow on hover (desktop) */
+    .cta:hover{ box-shadow:0 16px 30px rgba(255,122,0,.38), 0 0 0 1px rgba(255,255,255,.08) inset; }
+    .ghost:hover{ box-shadow:0 10px 24px rgba(255,255,255,.06), 0 0 0 1px rgba(255,255,255,.12) inset; }
+    /* tap glow class added via JS for mobile */
+    .cta.tapped{ box-shadow:0 0 0 4px rgba(255,122,0,.18), 0 12px 28px rgba(255,122,0,.32); }
+    .ghost.tapped{ box-shadow:0 0 0 4px rgba(255,255,255,.08), 0 10px 22px rgba(0,0,0,.22); }
+
+    @media (max-width:640px){
+      header{ padding-top:12px; }
+      header .row .cta, header .row .ghost{
+        padding:9px 12px;
+        border-radius:10px;
+        font-size:14px;
+        box-shadow:none;
       }
+      /* add slight separation from name */
+      header .brand{ margin-inline-start:6px; }
     }
 
   </style>
@@ -123,12 +150,11 @@
       </div>
       <div class="row">
         <a href="#book" class="cta">احجز الآن</a>
-        <a href="#faq" class="ghost">الأسئلة الشائعة</a>
       </div>
     </header>
 
     <main>
-      <section class="card">
+      <section class="card" tabindex="0">
         <span class="badge">خيار مجاني</span>
         <h2 style="margin:8px 0 6px">استشارة تمهيدية</h2>
         <div class="mini">مكالمة تعارف سريعة عبر واتساب لفهم وضعك وتحديد أفضل خطوة لك.</div>
@@ -143,14 +169,14 @@
         <div class="policy" style="margin-top:8px">الدفع عبر الكريبتو غير مطلوب لهذا الخيار.</div>
       </section>
 
-      <section class="card">
+      <section class="card" tabindex="0">
         <span class="badge">الخيار الكامل</span>
         <h2 style="margin:8px 0 6px">استشارة مدفوعة — خارطة طريق</h2>
         <div class="mini">
           ابدأ صح، حلّ مشاكلك، وأنا معك خطوة خطوة.<br>
           <small>سأكون بجانبك حتى تصل لما تطمح له.</small>
-          <div class="mini">🕒 مكالمة مدتها <b>60 دقيقة</b> (مدفوعة)</div>
         </div>
+        <div class="mini">🕒 مكالمة مدتها <b>60 دقيقة</b> (مدفوعة)</div>
         <div class="sep"></div>
         <div class="price">49<span>$</span></div>
         <ul class="bullets">
@@ -166,7 +192,7 @@
         <div class="policy" style="margin-top:8px">الدفع عبر الكريبتو فقط (USDT — شبكة TRC20).</div>
       </section>
 
-      <section class="card" id="book" style="grid-column:1/-1">
+      <section class="card" id="book" tabindex="0" style="grid-column:1/-1">
         <h3 style="margin-top:0">الحجز السريع</h3>
 
         <div class="row" style="gap:8px">
@@ -224,7 +250,8 @@
       </section>
 
       <!-- FAQ -->
-      <section id="faq" class="faq card">
+      
+      <section id="faq" class="faq card" tabindex="0" style="margin-top:26px">
         <h3>الأسئلة الشائعة</h3>
         <div class="mini" style="margin:-4px 0 10px">إذا لم تجد سؤالك، لا تتردد في التواصل معنا.</div>
 
@@ -246,43 +273,11 @@
 
         <div class="qa">
           <button class="qbtn" aria-expanded="false">
-            هل توجد متابعة مستمرة معي؟
-            <span class="icon">+</span>
-          </button>
-          <div class="ans"><p>نعم، بعد الجلسة المدفوعة تحصل على متابعة نصية قصيرة لمدة 7 أيام للتأكد من تنفيذ الخطوات والإجابة على الاستفسارات السريعة.</p></div>
-        </div>
-
-        <div class="qa">
-          <button class="qbtn" aria-expanded="false">
             هل أقدر أحقق دخل فعلاً من التداول؟
             <span class="icon">+</span>
           </button>
           <div class="ans"><p>ممكن، لكن ليس وعدًا. النجاح يعتمد على التزامك بالخطة، إدارة المخاطر، وسجل ممارسة منضبط. دوري أن أختصر الطريق وأبني لك إطارًا عمليًا.</p></div>
         </div>
-
-        <div class="qa">
-          <button class="qbtn" aria-expanded="false">
-            لمن هذه الاستشارة؟
-            <span class="icon">+</span>
-          </button>
-          <div class="ans"><p>للمبتدئ الذي يريد بداية صحيحة وخارطة طريق واضحة، وللمتوسط الذي يواجه مشاكل في الانضباط، إدارة المخاطر، أو آلية الدخول.</p></div>
-        </div>
-
-        <div class="qa">
-          <button class="qbtn" aria-expanded="false">
-            ما الأسواق التي أعمل عليها؟
-            <span class="icon">+</span>
-          </button>
-          <div class="ans"><p>فوركس وكريبتو فقط. نرتّب الخطة حسب السوق الذي يناسبك.</p></div>
-        
-        <div class="qa">
-          <button class="qbtn" aria-expanded="false">
-            ماذا تشمل الجلسة المجانية (15 دقيقة)؟
-            <span class="icon">+</span>
-          </button>
-          <div class="ans"><p>تعريف سريع بوضعك الحالي، تحديد مشكلتك الرئيسية، وتعيين أول خطوة عملية لك. لا تشمل خطة مفصلة أو متابعة.</p></div>
-        </div>
-</div>
 
         <div class="qa">
           <button class="qbtn" aria-expanded="false">
@@ -298,30 +293,15 @@
             <span class="icon">+</span>
           </button>
           <div class="ans"><p>الدفع عبر الكريبتو فقط <b>USDT (TRC20)</b>.
-تحتاج إلى محفظة تدعم شبكة TRC20 (مثل TronLink/OKX/Bybit...) ثم تحويل المبلغ وارسال <b>TxID</b> أو لقطة التحويل داخل واتساب.</p></div>
+          تحتاج إلى محفظة تدعم شبكة TRC20 (مثل TronLink/OKX/Bybit...) ثم تحويل المبلغ وارسال <b>TxID</b> أو لقطة التحويل داخل واتساب.</p></div>
         </div>
 
-        <div class="qa">
-          <button class="qbtn" aria-expanded="false">
-            بأي لغة تتم الجلسة؟
-            <span class="icon">+</span>
-          </button>
-          <div class="ans"><p>العربية فقط.</p></div>
-        </div>
-
-        <div class="qa">
-          <button class="qbtn" aria-expanded="false">
-            ما الخصوصية؟
-            <span class="icon">+</span>
-          </button>
-          <div class="ans"><p>كل ما تشاركه يبقى سريًا ويُستخدم فقط لغرض الاستشارة، ولن يُشارك مع أي طرف.</p></div>
-        </div>
-
-        <div class="faq-foot">لم تجد سؤالك؟ لا تتردد في التواصل عبر
+        <div class="faq-foot" style="margin-top:12px">لبقية الأسئلة مثل اللغة أو الخصوصية، يمكنك التواصل مباشرة عبر
           <a href="https://wa.me/447939893953" target="_blank" rel="noopener">واتساب</a> أو
           <a href="https://t.me/sinanxch0" target="_blank" rel="noopener">تيليجرام</a>.
         </div>
       </section>
+
 
     </main>
 
@@ -376,7 +356,6 @@
       if(optPaid.checked){
         base += `\nالدفع: USDT (TRC20)\nالعنوان: ${usdtAddr}\nسأرسل لقطة التحويل/TxID بعد الإرسال.`;
       }
-      
       // Append duration line without altering existing structure
       if(optPaid.checked){
         base += `\n🕒 المدة: مكالمة 60 دقيقة (مدفوعة)`;
@@ -435,7 +414,6 @@
     optPaid.addEventListener('change', ()=>{ if (optPaid.checked) playConfirm(); });
 
     // --------- Scroll Reveal (with fallback) ---------
-    document.documentElement.classList.add('js');
     function revealAll(){ document.querySelectorAll('.card').forEach(el=> el.classList.add('revealed')); }
     if ('IntersectionObserver' in window){
       const observer = new IntersectionObserver((entries)=>{
@@ -445,24 +423,26 @@
       setTimeout(()=>{ const anyHidden = Array.from(document.querySelectorAll('.card')).some(el=> !el.classList.contains('revealed')); if(anyHidden) revealAll(); }, 2000);
     } else { revealAll(); }
 
-    // --------- FAQ accordion ---------
-    document.querySelectorAll('.qa .qbtn').forEach(btn=>{
-      btn.addEventListener('click', ()=>{
-        const qa = btn.parentElement;
-        const open = qa.classList.toggle('open');
-        btn.setAttribute('aria-expanded', open);
-        btn.querySelector('.icon').textContent = open ? '−' : '+';
+    // --- interactive lift on touch/mouse ---
+    function bindCardLift(){
+      document.querySelectorAll('.card').forEach(card=>{
+        ['pointerdown','mousedown','touchstart'].forEach(ev=>{
+          card.addEventListener(ev, ()=> card.classList.add('card-active'), {passive:true});
+        });
+        ['pointerup','mouseup','mouseleave','touchend','touchcancel','blur'].forEach(ev=>{
+          card.addEventListener(ev, ()=> card.classList.remove('card-active'), {passive:true});
+        });
+      });
+    }
+    bindCardLift();
+
+    // --- tap glow for header buttons on mobile ---
+    document.querySelectorAll('header .row .cta, header .row .ghost').forEach(btn=>{
+      ['pointerdown','touchstart'].forEach(ev=>{
+        btn.addEventListener(ev, ()=>{ btn.classList.add('tapped'); setTimeout(()=>btn.classList.remove('tapped'), 220); }, {passive:true});
       });
     });
 
-
-    // Elevation press feedback on touch/any pointer
-    document.querySelectorAll('.card').forEach(card=>{
-      card.addEventListener('pointerdown', ()=> card.classList.add('pressed'));
-      ['pointerup','pointercancel','pointerleave'].forEach(ev=>{
-        card.addEventListener(ev, ()=> card.classList.remove('pressed'));
-      });
-    });
     refresh();
   </script>
 </body>
