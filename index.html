@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>استشارات — Sinan Ahmed</title>
-  <meta name="description" content="احجز استشارة مجانية 15 دقيقة أو مدفوعة 60 دقيقة. أوقات مكة 6–11 مساءً. الدفع USDT (TRC20).">
+  <meta name="description" content="احجز استشارة مجانية 15 دقيقة أو مدفوعة 60 دقيقة. الحجز بعد 24 ساعة على الأقل. الدفع USDT (TRC20).">
   <meta name="theme-color" content="#0F0F10">
   <style>
     :root{
@@ -13,16 +13,14 @@
       --pill:#6d28d9; --accent:#00aaff;
     }
     *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;background:var(--bg);color:var(--text);line-height:1.6;
-      animation:fadeIn .6s ease both}
+    html{scroll-behavior:smooth; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; text-rendering:optimizeLegibility;}
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;background:var(--bg);color:var(--text);line-height:1.6;animation:fadeIn .6s ease both}
     @keyframes fadeIn{from{opacity:0; transform:translateY(6px)}to{opacity:1; transform:none}}
 
-    /* spotlight mouse (disabled on touch) */
+    /* spotlight */
     body::before{content:""; position:fixed; inset:0; pointer-events:none;
-      background:radial-gradient(220px 220px at var(--mx,-1000px) var(--my,-1000px),
-                 rgba(255,255,255,.06), rgba(255,255,255,0) 60%);
-      mix-blend-mode:screen; opacity:.65; transition:opacity .2s}
+      background:radial-gradient(220px 220px at var(--mx,-1000px) var(--my,-1000px), rgba(255,255,255,.06), rgba(255,255,255,0) 60%);
+      mix-blend-mode:screen; opacity:.5; transition:opacity .2s}
     @media (hover:none){ body::before{opacity:0} }
 
     .wrap{max-width:980px;margin:0 auto;padding:24px;position:relative}
@@ -32,35 +30,42 @@
       display:grid;place-items:center;color:#111;font-weight:800;box-shadow:0 6px 14px rgba(255,122,0,.25), inset 0 0 0 1px rgba(255,255,255,.15)}
     h1{margin:0;font-size:18px}
 
+    .row{display:flex;gap:10px;flex-wrap:wrap}
     .cta, .ghost{
+      position:relative; overflow:hidden;
       display:inline-flex;gap:8px;align-items:center;border-radius:12px;padding:12px 16px;text-decoration:none;cursor:pointer;
-      transition:transform .18s ease, box-shadow .18s ease, background .18s ease, color .18s ease;
-      user-select:none;
+      transition:transform .18s ease, box-shadow .18s ease, background .18s ease, color .18s ease; user-select:none;
     }
     .cta{background:var(--brand);color:#111;font-weight:800;box-shadow:0 10px 24px rgba(255,122,0,.25)}
-    .cta:hover{transform:translateY(-2px); box-shadow:0 16px 30px rgba(255,122,0,.35)}
-    .cta:active{transform:translateY(0); box-shadow:0 8px 18px rgba(255,122,0,.25)}
+    .cta:hover{transform:translateY(-2px); box-shadow:0 16px 30px rgba(255,122,0,.38), 0 0 0 1px rgba(255,255,255,.08) inset}
+    .cta.tapped{ box-shadow:0 0 0 4px rgba(255,122,0,.18), 0 12px 28px rgba(255,122,0,.32) }
     .ghost{border:1px dashed var(--stroke);color:#fff;background:transparent}
-    .ghost:hover{transform:translateY(-1px)}
+    .ghost:hover{transform:translateY(-1px); box-shadow:0 10px 24px rgba(255,255,255,.06), 0 0 0 1px rgba(255,255,255,.12) inset}
+
+    @media (max-width:640px){
+      header{ padding-top:12px; }
+      header .row .cta, header .row .ghost{ padding:9px 12px; border-radius:10px; font-size:14px; box-shadow:none; }
+      header .brand{ margin-inline-start:6px; }
+    }
 
     main{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:22px}
     @media (max-width:900px){main{grid-template-columns:1fr}}
 
-    /* cards */
-    .card{background:linear-gradient(180deg, rgba(255,255,255,.02), transparent 40%),#141416;border:1px solid var(--stroke);border-radius:16px;padding:20px}
-    /* reveal animation with fallback */
+    /* cards + reveal */
+    .card{background:linear-gradient(180deg, rgba(255,255,255,.02), transparent 40%),#141416;border:1px solid var(--stroke);border-radius:16px;padding:20px; backface-visibility:hidden; transform:translateZ(0)}
     .card{opacity:1; transform:none}
     .js .card{opacity:0; transform:translateY(12px); transition:opacity .6s ease, transform .6s ease}
     .js .card.revealed{opacity:1; transform:none}
 
-    .badge{display:inline-block;padding:6px 10px;border-radius:999px;background:#111;border:1px solid var(--stroke);font-size:12px;color:#muted}
-    .price{font-size:40px;font-weight:900} .mini{font-size:13px;color:var(--muted)}
+    .badge{display:inline-block;padding:6px 10px;border-radius:999px;background:#111;border:1px solid var(--stroke);font-size:12px;color:#b9b9b9}
+    .price{font-size:40px;font-weight:900}
+    .mini{font-size:13px;color:#b9b9b9}
     .bullets{display:grid;gap:10px;margin:14px 0} .bullets li{list-style:none;display:flex;gap:10px}
     .dot{width:10px;height:10px;border-radius:50%;background:var(--ok);margin-top:8px}
     .sep{height:1px;background:var(--stroke);margin:14px 0}
     .grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px} @media (max-width:520px){.grid2{grid-template-columns:1fr} .price{font-size:34px}}
-    .row{display:flex;gap:12px;flex-wrap:wrap}
     input, select{background:#0c0c0d;border:1px solid var(--stroke);color:#fff;border-radius:10px;padding:10px 12px}
+
     .usdt{background:#0c0c0d;border:1px solid var(--stroke);border-radius:14px;padding:12px;margin-top:12px}
     code.addr{font-family:ui-monospace,Menlo,Consolas,monospace;background:#111;border:1px solid var(--stroke);padding:8px 10px;border-radius:10px;display:inline-block;direction:ltr}
     .footer{margin-top:28px;color:var(--muted);font-size:12px;text-align:center}
@@ -71,41 +76,47 @@
     .pill.paid{background:linear-gradient(135deg, rgba(109,40,217,.35), rgba(109,40,217,.15)); border:1px solid rgba(109,40,217,.45)}
     .pill.free{background:transparent}
     .pill.selected{box-shadow:0 0 0 2px rgba(0,170,255,.35), 0 0 22px rgba(0,170,255,.18) inset; transform:translateY(-1px)}
-    .pill.selected::after{content:""; position:absolute; inset:-3px; border-radius:999px; z-index:-1;
-      background:radial-gradient(60% 120% at 50% 20%, rgba(0,170,255,.12), transparent 70%); animation:pulse 1.8s ease-in-out infinite}
+    .pill.selected::after{content:""; position:absolute; inset:-3px; border-radius:999px; z-index:-1; background:radial-gradient(60% 120% at 50% 20%, rgba(0,170,255,.12), transparent 70%); animation:pulse 1.8s ease-in-out infinite}
     @keyframes pulse{0%,100%{opacity:.4; filter:blur(0)}50%{opacity:.85; filter:blur(1px)}}
 
-    .floating{position:fixed;left:16px;bottom:16px;background:#25D366;color:#111;font-weight:800;border:none;border-radius:999px;padding:12px 16px;display:flex;gap:10px;align-items:center;box-shadow:0 10px 24px rgba(37,211,102,.35);text-decoration:none;z-index:9}
-    .linklike{color:#fff;text-decoration:underline;cursor:pointer}
+    /* رفع البطاقات */
+    .card{transition: transform .22s ease, box-shadow .22s ease, opacity .6s ease; will-change: transform, box-shadow;}
+    .card:hover, .card:focus-within, .card.card-active{ transform: translateY(-6px); box-shadow: 0 12px 30px rgba(0,0,0,.35), 0 0 0 1px rgba(255,255,255,.03) inset; }
+    @media (prefers-reduced-motion:reduce){ .card:hover, .card:focus-within, .card.card-active{ transform:none; box-shadow:none; } }
 
-    /* --- interactive lift for cards (hover/touch/focus) --- */
-    .card{
-      transition: transform .22s ease, box-shadow .22s ease, opacity .6s ease;
-      will-change: transform, box-shadow;
-    }
-    .card:hover,
-    .card:focus-within,
-    .card.card-active{
-      transform: translateY(-4px);
-      box-shadow: 0 12px 30px rgba(0,0,0,.35), 0 0 0 1px rgba(255,255,255,.03) inset;
-    }
-    @media (prefers-reduced-motion:reduce){
-      .card:hover, .card:focus-within, .card.card-active{ transform:none; box-shadow:none; }
-    }
-
-    /* FAQ styles */
+    /* FAQ details/summary */
     .faq{grid-column:1/-1}
     .faq h3{margin:0 0 10px}
-    .qa{background:#141416;border:1px solid var(--stroke);border-radius:14px;overflow:hidden}
-    .qa + .qa{margin-top:10px}
-    .qbtn{width:100%;text-align:inherit;background:#141416;color:#fff;border:none;padding:16px;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:12px}
-    .qbtn:hover{background:#17181a}
-    .icon{width:24px;height:24px;border-radius:6px;background:#0f0f10;border:1px solid var(--stroke);display:grid;place-items:center;font-weight:700;color:#bbb}
-    .ans{max-height:0;overflow:hidden;transition:max-height .35s ease, padding .35s ease;padding:0 16px}
-    .qa.open .ans{max-height:500px;padding:12px 16px 16px}
-    .ans p{margin:0;color:#bdbdbd}
+    .faq details { background:#141416; border:1px solid var(--stroke); border-radius:14px; overflow:hidden; }
+    .faq details + details { margin-top:10px; }
+    .faq summary { list-style:none; cursor:pointer; padding:16px; display:flex; align-items:center; justify-content:space-between; }
+    .faq summary::-webkit-details-marker { display:none; }
+    .faq summary:after { content:'+'; width:24px; height:24px; display:grid; place-items:center; border-radius:6px; background:#0f0f10; border:1px solid var(--stroke); color:#bbb; font-weight:700; }
+    .faq details[open] summary:after { content:'–'; }
+    .faq .ans { padding:0 16px; max-height:0; overflow:hidden; transition:max-height .35s ease, padding .35s ease; }
+    .faq details[open] .ans { padding:12px 16px 16px; max-height:500px; }
     .faq-foot{margin-top:12px;color:#bdbdbd;font-size:13px}
     .faq-foot a{color:#fff}
+
+    .note-red{ color:#ff4d4f; font-size:13px; margin-top:6px }
+    @media (max-width:520px){ .note-red{ font-size:12px } }
+
+    /* زر واتساب عائم يفتح واتساب مباشرة */
+    .float-wa {
+      position: fixed;
+      bottom: 18px;
+      right: 18px;
+      background: #25D366;
+      color: #fff;
+      font-weight: 700;
+      padding: 12px 16px;
+      border-radius: 999px;
+      box-shadow: 0 6px 18px rgba(0,0,0,.28);
+      text-decoration: none;
+      z-index: 999;
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+    .float-wa:hover { transform: translateY(-2px); box-shadow: 0 8px 22px rgba(37,211,102,.45); }
 
     @media (prefers-reduced-motion:reduce){
       *{animation:none !important; transition:none !important}
@@ -113,35 +124,6 @@
       .js .card{opacity:1 !important; transform:none !important}
       body::before{opacity:0 !important}
     }
-
-    /* === Header buttons: mobile sizing + glow effect === */
-    header .row{ gap:10px; }
-    .cta, .ghost{
-      position:relative;
-      overflow:hidden; /* for subtle inner glow mask */
-    }
-    /* glow on hover (desktop) */
-    .cta:hover{ box-shadow:0 16px 30px rgba(255,122,0,.38), 0 0 0 1px rgba(255,255,255,.08) inset; }
-    .ghost:hover{ box-shadow:0 10px 24px rgba(255,255,255,.06), 0 0 0 1px rgba(255,255,255,.12) inset; }
-    /* tap glow class added via JS for mobile */
-    .cta.tapped{ box-shadow:0 0 0 4px rgba(255,122,0,.18), 0 12px 28px rgba(255,122,0,.32); }
-    .ghost.tapped{ box-shadow:0 0 0 4px rgba(255,255,255,.08), 0 10px 22px rgba(0,0,0,.22); }
-
-    @media (max-width:640px){
-      header{ padding-top:12px; }
-      header .row .cta, header .row .ghost{
-        padding:9px 12px;
-        border-radius:10px;
-        font-size:14px;
-        box-shadow:none;
-      }
-      /* add slight separation from name */
-      header .brand{ margin-inline-start:6px; }
-    }
-
-  
-    .note-red{ color:#ff4d4f; font-size:13px; margin-top:6px }
-    @media (max-width:520px){ .note-red{ font-size:12px } }
   </style>
 </head>
 <body>
@@ -157,6 +139,7 @@
     </header>
 
     <main>
+      <!-- بطاقة مجانية -->
       <section class="card" tabindex="0">
         <span class="badge">خيار مجاني</span>
         <h2 style="margin:8px 0 6px">استشارة تمهيدية</h2>
@@ -172,6 +155,7 @@
         <div class="policy" style="margin-top:8px">الدفع عبر الكريبتو غير مطلوب لهذا الخيار.</div>
       </section>
 
+      <!-- بطاقة مدفوعة -->
       <section class="card" tabindex="0">
         <span class="badge">الخيار الكامل</span>
         <h2 style="margin:8px 0 6px">استشارة مدفوعة — خارطة طريق</h2>
@@ -195,6 +179,7 @@
         <div class="policy" style="margin-top:8px">الدفع عبر الكريبتو فقط (USDT — شبكة TRC20).</div>
       </section>
 
+      <!-- الحجز السريع -->
       <section class="card" id="book" tabindex="0" style="grid-column:1/-1">
         <h3 style="margin-top:0">الحجز السريع</h3>
 
@@ -202,23 +187,27 @@
           <label class="pill free" id="pill-free"><input type="radio" name="plan" id="opt-free" checked> استشارة مجانية</label>
           <label class="pill paid" id="pill-paid"><input type="radio" name="plan" id="opt-paid"> استشارة مدفوعة</label>
         </div>
-        <div class="note-red">ملاحظة: اختر التاريخ والوقت المناسبين لك. لا تُقبل الاستشارة في نفس اليوم — يجب أن يكون الحجز بعد 24 ساعة على الأقل.</div>
 
         <div class="grid2" style="margin-top:10px">
           <div>
             <div class="mini">التاريخ (بتوقيت مكة) <span class="note-red">— اختر تاريخًا بعد اليوم (الحجز بعد 24 ساعة على الأقل)</span></div>
-            <input type="date" id="date">
+            <input type="date" id="date" inputmode="none" autocomplete="off">
             <div class="note-red">لا يُسمح بالحجز بتاريخ اليوم أو أي تاريخ سابق.</div>
           </div>
           <div>
             <div class="mini">الوقت</div>
             <select id="time">
+              <option value="12:00">12:00 ظهرًا</option>
+              <option value="13:00">1:00 مساءً</option>
+              <option value="14:00">2:00 مساءً</option>
+              <option value="15:00">3:00 مساءً</option>
+              <option value="16:00">4:00 مساءً</option>
+              <option value="17:00">5:00 مساءً</option>
               <option value="18:00">6:00 مساءً</option>
               <option value="19:00">7:00 مساءً</option>
               <option value="20:00">8:00 مساءً</option>
               <option value="21:00">9:00 مساءً</option>
               <option value="22:00">10:00 مساءً</option>
-              <option value="23:00">11:00 مساءً</option>
             </select>
           </div>
         </div>
@@ -248,75 +237,57 @@
         </div>
 
         <div class="policy">
-          • الأوقات: 6:00–11:00 مساءً (بتوقيت مكة).<br>
           • يمكن الإلغاء أو إعادة الجدولة قبل الموعد بـ12 ساعة.<br>
           • تُلغى الجلسة تلقائيًا إذا تأخر العميل أكثر من 30 دقيقة.
         </div>
       </section>
 
-      <!-- FAQ -->
-      
+      <!-- FAQ بأسفل الصفحة (details/summary) -->
       <section id="faq" class="faq card" tabindex="0" style="margin-top:26px">
-        <h3>الأسئلة الشائعة</h3>
-        <div class="mini" style="margin:-4px 0 10px">إذا لم تجد سؤالك، لا تتردد في التواصل معنا.</div>
+        <h3>💬 الأسئلة الشائعة</h3>
 
-        <div class="qa">
-          <button class="qbtn" aria-expanded="false">
-            ما نوع الدعم الذي تقدّمه؟
-            <span class="icon">+</span>
-          </button>
-          <div class="ans"><p>مكالمات واتساب/تيليجرام + خطة طريق عملية قابلة للتنفيذ + متابعة نصية قصيرة بعد الجلسة ضمن أوقات العمل (6–11 مساءً بتوقيت مكة).</p></div>
-        </div>
+        <details class="qa">
+          <summary class="qbtn">ما نوع الدعم الذي تقدّمه؟</summary>
+          <div class="ans"><p>مكالمات واتساب/تيليجرام + خطة طريق عملية قابلة للتنفيذ + متابعة نصية قصيرة بعد الجلسة ضمن أوقات العمل.</p></div>
+        </details>
 
-        <div class="qa">
-          <button class="qbtn" aria-expanded="false">
-            ما الفرق بين التوجيه الشخصي والمتابعة والمشاهدة فقط؟
-            <span class="icon">+</span>
-          </button>
+        <details class="qa">
+          <summary class="qbtn">ما الفرق بين التوجيه الشخصي والمتابعة والمشاهدة فقط؟</summary>
           <div class="ans"><p><b>التوجيه الشخصي:</b> جلسة 60 دقيقة مع تشخيص وخطة 3–5 خطوات + ملف PDF + متابعة نصية قصيرة. <br><b>المتابعة:</b> رسائل لاحقة مختصرة لتحديث التقدم وتعديلات بسيطة — ليست جلسة جديدة. <br><b>المشاهدة فقط:</b> تعلّم عام من يوتيوب بدون تخصيص أو متابعة فردية.</p></div>
-        </div>
+        </details>
 
-        <div class="qa">
-          <button class="qbtn" aria-expanded="false">
-            هل أقدر أحقق دخل فعلاً من التداول؟
-            <span class="icon">+</span>
-          </button>
+        <details class="qa">
+          <summary class="qbtn">هل أقدر أحقق دخل فعلاً من التداول؟</summary>
           <div class="ans"><p>ممكن، لكن ليس وعدًا. النجاح يعتمد على التزامك بالخطة، إدارة المخاطر، وسجل ممارسة منضبط. دوري أن أختصر الطريق وأبني لك إطارًا عمليًا.</p></div>
-        </div>
+        </details>
 
-        <div class="qa">
-          <button class="qbtn" aria-expanded="false">
-            ماذا سأحصل عليه في الجلسة المدفوعة؟
-            <span class="icon">+</span>
-          </button>
+        <details class="qa">
+          <summary class="qbtn">ماذا سأحصل عليه في الجلسة المدفوعة؟</summary>
           <div class="ans"><p>تشخيص واضح لمشكلتك، خارطة طريق من 3–5 خطوات قابلة للتنفيذ، تنظيم مهامك اليومية/الأسبوعية، ملف PDF بالخلاصة، ومتابعة نصية قصيرة بعد الجلسة.</p></div>
-        </div>
+        </details>
 
-        <div class="qa">
-          <button class="qbtn" aria-expanded="false">
-            كيف أدفع؟
-            <span class="icon">+</span>
-          </button>
-          <div class="ans"><p>الدفع عبر الكريبتو فقط <b>USDT (TRC20)</b>.
-          تحتاج إلى محفظة تدعم شبكة TRC20 (مثل TronLink/OKX/Bybit...) ثم تحويل المبلغ وارسال <b>TxID</b> أو لقطة التحويل داخل واتساب.</p></div>
-        </div>
+        <details class="qa">
+          <summary class="qbtn">كيف أدفع؟</summary>
+          <div class="ans"><p>الدفع عبر الكريبتو فقط <b>USDT (TRC20)</b>. تحتاج إلى محفظة TRC20 (مثل TronLink/OKX/Bybit...) ثم تحويل المبلغ وإرسال <b>TxID</b> أو لقطة التحويل في واتساب.</p></div>
+        </details>
 
-        <div class="faq-foot" style="margin-top:12px">لبقية الأسئلة مثل اللغة أو الخصوصية، يمكنك التواصل مباشرة عبر
+        <div class="faq-foot">
+          لبقية الأسئلة مثل اللغة أو الخصوصية، تواصل عبر
           <a href="https://wa.me/447939893953" target="_blank" rel="noopener">واتساب</a> أو
           <a href="https://t.me/sinanxch0" target="_blank" rel="noopener">تيليجرام</a>.
         </div>
       </section>
-
-
     </main>
 
     <p class="footer">هذه الصفحة مخصصة لحجز الاستشارات مباشرة عبر واتساب أو تليجرام.</p>
   </div>
 
-  <a id="float-wa" class="floating" target="_blank" rel="noopener">واتساب مباشر</a>
+  <!-- زر واتساب عائم يفتح واتساب مباشرة برسالة تمهيدية -->
+  <a class="float-wa" target="_blank" rel="noopener"
+     href="https://wa.me/447939893953?text=%D9%85%D8%B1%D8%AD%D8%A8%D9%8B%D8%A7%20%D8%B3%D9%86%D8%A7%D9%86%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%A7%D9%84%D8%AA%D8%AD%D8%AF%D8%AB%20%D8%AD%D9%88%D9%84%20%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D8%B4%D8%A7%D8%B1%D8%A7%D8%AA.">💬 واتساب مباشر</a>
 
   <script>
-    // Enable JS class for reveal animation
+    // JS flag
     document.documentElement.classList.add('js');
 
     // spotlight mouse (desktop)
@@ -325,7 +296,7 @@
       document.documentElement.style.setProperty('--my', e.clientY + 'px');
     });
 
-    // --------- إعدادات عامة ---------
+    // ---- إعدادات عامة ----
     const num = "447939893953";
     const tg = "https://t.me/sinanxch0";
     const usdtAddr = "TNtQDpBAXXrrfSP7T2vgFLV3uvQFvQVUUf";
@@ -341,19 +312,41 @@
     const waBtn = document.getElementById('wa-btn');
     const tgBtn = document.getElementById('tg-btn');
     const copyUsdt = document.getElementById('copy-usdt');
-    const floatWa = document.getElementById('float-wa');
     const showPay1 = document.getElementById('show-pay1');
     const showPay2 = document.getElementById('show-pay2');
     const payHint1 = document.getElementById('pay-hint1');
     const payHint2 = document.getElementById('pay-hint2');
 
-    function todayISO(){ const d=new Date(); return d.toISOString().slice(0,10); }
-    dateEl.value = todayISO(); dateEl.min = todayISO();
-
     function planWord(){ return optPaid.checked ? "استشارة مدفوعة — خارطة طريق" : "استشارة تمهيدية (مجانية)"; }
+    function fmtLocalYYYYMMDD(d){ const y=d.getFullYear(), m=String(d.getMonth()+1).padStart(2,'0'), da=String(d.getDate()).padStart(2,'0'); return `${y}-${m}-${da}`; }
+
+    // تعيين التاريخ الافتراضي للغد + منع نفس اليوم مع تنبيه
+    (function initDateMin(){
+      const now = new Date();
+      const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+      const tomorrow = new Date(now.getFullYear(), now.getMonth(), now.getDate()+1);
+      dateEl.min = fmtLocalYYYYMMDD(today);   // نلتقط محاولة اختيار اليوم
+      dateEl.value = fmtLocalYYYYMMDD(tomorrow); // نعيّن الغد افتراضياً
+    })();
+
+    function enforceNoSameDay(){
+      try{
+        const now = new Date();
+        const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+        const tomorrow = new Date(now.getFullYear(), now.getMonth(), now.getDate()+1);
+        const chosen = new Date(dateEl.value + 'T00:00');
+        if (isNaN(chosen.getTime())) return;
+        if (chosen <= today){
+          alert('ممنوع طلب الاستشارة في نفس اليوم — يجب أن يكون الحجز بعد 24 ساعة على الأقل.');
+          dateEl.value = fmtLocalYYYYMMDD(tomorrow);
+        }
+      }catch(e){}
+    }
+    ['change','input','blur'].forEach(ev => dateEl.addEventListener(ev, ()=>{ enforceNoSameDay(); refresh(); }));
+    enforceNoSameDay();
 
     function buildText(){
-      const d = dateEl.value || todayISO();
+      const d = dateEl.value;
       const t = timeEl.value || "19:00";
       const name = (nameEl.value || "").trim();
       let base = `${planWord()}\nالتاريخ: ${d}\nالوقت: ${t}`;
@@ -361,7 +354,6 @@
       if(optPaid.checked){
         base += `\nالدفع: USDT (TRC20)\nالعنوان: ${usdtAddr}\nسأرسل لقطة التحويل/TxID بعد الإرسال.`;
       }
-      // Append duration line without altering existing structure
       if(optPaid.checked){
         base += `\n🕒 المدة: مكالمة 60 دقيقة (مدفوعة)`;
       } else {
@@ -374,7 +366,6 @@
       const text = encodeURIComponent(buildText());
       const wa = `https://wa.me/${num}?text=${text}`;
       waBtn.href = wa;
-      floatWa.href = `https://wa.me/${num}`;
       tgBtn.href = `${tg}?text=${text}`;
       pillFree.classList.toggle('selected', optFree.checked);
       pillPaid.classList.toggle('selected', optPaid.checked);
@@ -387,7 +378,7 @@
     if(showPay1){ showPay1.addEventListener('click', ()=> toggle(payHint1)); }
     if(showPay2){ showPay2.addEventListener('click', ()=> toggle(payHint2)); }
 
-    // --------- تمرير تلقائي لقسم الحجز عند تحميل الصفحة ---------
+    // تمرير تلقائي للحجز عند التحميل
     window.addEventListener('load', () => {
       if (!location.hash) {
         const b = document.getElementById('book');
@@ -395,13 +386,12 @@
       }
     });
 
-    // --------- تبديل الخطة عند الضغط على الأزرار في البطاقات ---------
+    // تبديل الخطة من البطاقات + صوت تأكيد عند اختيار المدفوعة
     const ctaPaid = document.getElementById('cta-paid');
     const ctaFree2 = document.getElementById('cta-free');
     if (ctaPaid) { ctaPaid.addEventListener('click', ()=>{ optPaid.checked = true; optFree.checked = false; playConfirm(); refresh(); }); }
     if (ctaFree2) { ctaFree2.addEventListener('click', ()=>{ optFree.checked = true; optPaid.checked = false; refresh(); }); }
 
-    // --------- صوت تأكيد عند اختيار "مدفوعة" ---------
     let audioCtx = null;
     function playConfirm(){
       try{
@@ -418,7 +408,7 @@
     }
     optPaid.addEventListener('change', ()=>{ if (optPaid.checked) playConfirm(); });
 
-    // --------- Scroll Reveal (with fallback) ---------
+    // Scroll Reveal
     function revealAll(){ document.querySelectorAll('.card').forEach(el=> el.classList.add('revealed')); }
     if ('IntersectionObserver' in window){
       const observer = new IntersectionObserver((entries)=>{
@@ -428,7 +418,7 @@
       setTimeout(()=>{ const anyHidden = Array.from(document.querySelectorAll('.card')).some(el=> !el.classList.contains('revealed')); if(anyHidden) revealAll(); }, 2000);
     } else { revealAll(); }
 
-    // --- interactive lift on touch/mouse ---
+    // رفع البطاقات على اللمس/الماوس
     function bindCardLift(){
       document.querySelectorAll('.card').forEach(card=>{
         ['pointerdown','mousedown','touchstart'].forEach(ev=>{
@@ -441,7 +431,7 @@
     }
     bindCardLift();
 
-    // --- tap glow for header buttons on mobile ---
+    // تأثير tap للأزرار في الهيدر
     document.querySelectorAll('header .row .cta, header .row .ghost').forEach(btn=>{
       ['pointerdown','touchstart'].forEach(ev=>{
         btn.addEventListener(ev, ()=>{ btn.classList.add('tapped'); setTimeout(()=>btn.classList.remove('tapped'), 220); }, {passive:true});
