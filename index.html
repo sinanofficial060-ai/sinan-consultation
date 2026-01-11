@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>استشارات — Sinan Ahmed</title>
-  <meta name="description" content="احجز استشارة مجانية 15 دقيقة أو مدفوعة 60 دقيقة. الحجز بعد 24 ساعة على الأقل. الدفع USDT (TRC20).">
+  <title>استشارات تداول — Sinan Ahmed</title>
+  <meta name="description" content="استشارات تداول: جلسة بداية 15 دقيقة أو حل متكامل 60 دقيقة + متابعة. الدفع USDT (TRC20).">
   <meta name="theme-color" content="#0F0F10">
   <style>
     :root{
@@ -17,7 +17,6 @@
     body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;background:var(--bg);color:var(--text);line-height:1.6;animation:fadeIn .6s ease both}
     @keyframes fadeIn{from{opacity:0; transform:translateY(6px)}to{opacity:1; transform:none}}
 
-    /* spotlight */
     body::before{content:""; position:fixed; inset:0; pointer-events:none;
       background:radial-gradient(220px 220px at var(--mx,-1000px) var(--my,-1000px), rgba(255,255,255,.06), rgba(255,255,255,0) 60%);
       mix-blend-mode:screen; opacity:.5; transition:opacity .2s}
@@ -51,7 +50,6 @@
     main{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:22px}
     @media (max-width:900px){main{grid-template-columns:1fr}}
 
-    /* cards + reveal */
     .card{background:linear-gradient(180deg, rgba(255,255,255,.02), transparent 40%),#141416;border:1px solid var(--stroke);border-radius:16px;padding:20px; backface-visibility:hidden; transform:translateZ(0)}
     .card{opacity:1; transform:none}
     .js .card{opacity:0; transform:translateY(12px); transition:opacity .6s ease, transform .6s ease}
@@ -79,12 +77,10 @@
     .pill.selected::after{content:""; position:absolute; inset:-3px; border-radius:999px; z-index:-1; background:radial-gradient(60% 120% at 50% 20%, rgba(0,170,255,.12), transparent 70%); animation:pulse 1.8s ease-in-out infinite}
     @keyframes pulse{0%,100%{opacity:.4; filter:blur(0)}50%{opacity:.85; filter:blur(1px)}}
 
-    /* رفع البطاقات */
     .card{transition: transform .22s ease, box-shadow .22s ease, opacity .6s ease; will-change: transform, box-shadow;}
     .card:hover, .card:focus-within, .card.card-active{ transform: translateY(-6px); box-shadow: 0 12px 30px rgba(0,0,0,.35), 0 0 0 1px rgba(255,255,255,.03) inset; }
     @media (prefers-reduced-motion:reduce){ .card:hover, .card:focus-within, .card.card-active{ transform:none; box-shadow:none; } }
 
-    /* FAQ details/summary */
     .faq{grid-column:1/-1}
     .faq h3{margin:0 0 10px}
     .faq details { background:#141416; border:1px solid var(--stroke); border-radius:14px; overflow:hidden; }
@@ -101,7 +97,6 @@
     .note-red{ color:#ff4d4f; font-size:13px; margin-top:6px }
     @media (max-width:520px){ .note-red{ font-size:12px } }
 
-    /* زر واتساب عائم يفتح واتساب مباشرة */
     .float-wa {
       position: fixed;
       bottom: 18px;
@@ -131,83 +126,106 @@
     <header>
       <div class="brand">
         <div class="logo">SA</div>
-        <div><h1>Sinan Ahmed</h1></div>
+        <div><h1>Sinan Ahmed - استشارات تداول</h1></div>
       </div>
       <div class="row">
-        <a href="#book" class="cta">احجز الآن</a>
+        <a href="#book" class="cta">احجز استشارتك</a>
       </div>
     </header>
 
     <main>
       <!-- بطاقة مجانية -->
       <section class="card" tabindex="0">
-        <span class="badge">خيار مجاني</span>
-        <h2 style="margin:8px 0 6px">استشارة تمهيدية</h2>
-        <div class="mini">مكالمة تعارف سريعة عبر واتساب لفهم وضعك وتحديد أفضل خطوة لك.</div>
-        <div class="mini">🕒 مكالمة لمدة <b>15 دقيقة</b> (مجانية)</div>
+        <span class="badge">بداية ذكية</span>
+        <h2 style="margin:8px 0 6px">جلسة بداية - 15 دقيقة</h2>
+        <div class="mini">ابدأ رحلتك في التداول بالطريق الصحيح من أول خطوة</div>
+        <div class="mini">🕒 15 دقيقة مجانية - بداية ذكية</div>
+        
+        <div style="background:rgba(255,122,0,.05); border-radius:12px; padding:16px; margin:16px 0; border:1px solid rgba(255,122,0,.2)">
+          <div style="color:#ff7a00; font-weight:bold; margin-bottom:8px;">🎯 هذه الجلسة مناسبة إذا:</div>
+          <div class="mini">• تريد بداية صحيحة دون تجارب عشوائية</div>
+          <div class="mini">• لديك استفسارات محددة تحتاج إجابات واضحة</div>
+          <div class="mini">• تريد تقييم مسارك الحالي ومعرفة إذا كنت على الطريق الصحيح</div>
+          <div class="mini">• تحتاج تحديد أول خطوة عملية تناسب وضعك</div>
+        </div>
+        
         <div class="sep"></div>
         <div class="price">0<span>$</span></div>
         <ul class="bullets">
-          <li><span class="dot"></span><div>تعريف سريع بهدفك ومشاكلك الحالية</div></li>
-          <li><span class="dot" style="background:#ff7a00"></span><div>تحديد أول خطوة عملية تناسبك</div></li>
+          <li><span class="dot"></span><div>تشخيص سريع لوضعك الحالي</div></li>
+          <li><span class="dot" style="background:#ff7a00"></span><div>تحديد أول خطوة عملية وآمنة</div></li>
+          <li><span class="dot" style="background:#00aaff"></span><div>إجابات واضحة على أسئلتك المحددة</div></li>
+          <li><span class="dot" style="background:#a855f7"></span><div>توجيه نحو البداية الصحيحة</div></li>
         </ul>
-        <a href="#book" class="cta" id="cta-free">ابدأ واتساب</a>
-        <div class="policy" style="margin-top:8px">الدفع عبر الكريبتو غير مطلوب لهذا الخيار.</div>
+        <a href="#book" class="cta" id="cta-free" style="width:100%; text-align:center; justify-content:center; font-size:16px">
+          🚀 ابدأ مجاناً
+        </a>
+        <div class="policy" style="margin-top:8px">بداية ذكية توفر لك وقتاً ومالاً طويلاً</div>
       </section>
 
       <!-- بطاقة مدفوعة -->
       <section class="card" tabindex="0">
-        <span class="badge">الخيار الكامل</span>
-        <h2 style="margin:8px 0 6px">استشارة مدفوعة — خارطة طريق</h2>
-        <div class="mini">
-          ابدأ صح، حلّ مشاكلك، وأنا معك خطوة خطوة.<br>
-          <small>سأكون بجانبك حتى تصل لما تطمح له.</small>
+        <span class="badge">حل متكامل</span>
+        <h2 style="margin:8px 0 6px">الحل الشامل لمشاكلك في التداول</h2>
+        <div class="mini" style="color:#ff7a00">إذا تعبت من العشوائية والتشتت والخسائر المستمرة - هذا هو الحل</div>
+        <div class="mini">⏳ 60 دقيقة عميقة + 📞 48 ساعة متابعة شخصية</div>
+        
+        <div style="background:rgba(109,40,217,.05); border-radius:12px; padding:16px; margin:16px 0; border:1px solid rgba(109,40,217,.2)">
+          <div style="color:#a855f7; font-weight:bold; margin-bottom:8px;">🎯 هذا الحل يناسبك إذا كنت:</div>
+          <div class="mini">• تعاني من <b>العشوائية</b> في قرارات التداول</div>
+          <div class="mini">• تشعر <b>بالتشتت</b> ولا تعرف توجهك الصحيح</div>
+          <div class="mini">• تريد <b>التخلص من الخسائر المستمرة</b></div>
+          <div class="mini">• تحتاج <b>خطة واضحة</b> تضمن وصولك لهدفك</div>
+          <div class="mini">• تريد <b>متابعة شخصية</b> تضمن تطبيقك للخطة</div>
         </div>
-        <div class="mini">🕒 مكالمة مدتها <b>60 دقيقة</b> (مدفوعة)</div>
+        
         <div class="sep"></div>
         <div class="price">49<span>$</span></div>
         <ul class="bullets">
-          <li><span class="dot"></span><div>تشخيص دقيق لمشكلتك (نفسية / إدارة مخاطر / خطة / دخول)</div></li>
-          <li><span class="dot"></span><div>خارطة طريق واضحة من 3–5 خطوات قابلة للتنفيذ</div></li>
-          <li><span class="dot"></span><div>متابعة قصيرة بعد الجلسة + ملف PDF بالخلاصة</div></li>
+          <li><span class="dot"></span><div>تشخيص عميق لأسباب العشوائية والتشتت</div></li>
+          <li><span class="dot"></span><div>خطة عملية مضمونة للخروج من دائرة الخسائر</div></li>
+          <li><span class="dot"></span><div>استراتيجيات محددة تناسب شخصيتك في التداول</div></li>
+          <li><span class="dot" style="background:#ff7a00"></span><div>متابعة 48 ساعة لضمان تطبيقك للخطة بنجاح</div></li>
+          <li><span class="dot" style="background:#00aaff"></span><div>ملف PDF شامل خطوة بخطوة للرجوع إليه دائماً</div></li>
         </ul>
         <div class="row" style="margin-top:10px">
-          <a href="#book" class="cta" id="cta-paid">احجز عبر واتساب</a>
-          <span class="ghost" id="show-pay1" style="align-items:center">طريقة الدفع: USDT (TRC20)</span>
+          <a href="#book" class="cta" id="cta-paid" style="flex:1; text-align:center; justify-content:center; font-size:16px">
+            🎯 أبدأ الحل الشامل
+          </a>
+          <span class="ghost" id="show-pay1" style="align-items:center; flex:1; text-align:center">USDT (TRC20)</span>
         </div>
-        <div id="pay-hint1" class="policy" style="display:none">اضغط لنسخ العنوان: <code class="addr">TNtQDpBAXXrrfSP7T2vgFLV3uvQFvQVUUf</code></div>
-        <div class="policy" style="margin-top:8px">الدفع عبر الكريبتو فقط (USDT — شبكة TRC20).</div>
+        <div id="pay-hint1" class="policy" style="display:none">عنوان الدفع: <code class="addr">TNtQDpBAXXrrfSP7T2vgFLV3uvQFvQVUUf</code></div>
+        <div class="policy" style="margin-top:8px">استثمر في حلك النهائي - 49$ قد توفر عليك آلاف الدولارات من الخسائر</div>
       </section>
 
-      <!-- الحجز السريع -->
+      <!-- قسم الحجز -->
       <section class="card" id="book" tabindex="0" style="grid-column:1/-1">
-        <h3 style="margin-top:0">الحجز السريع</h3>
+        <h3 style="margin-top:0">📅 اختر بدايتك أو حلك الشامل</h3>
+        <div class="mini">اختر ما يناسب وضعك: بداية ذكية مجانية، أو حل متكامل لمشاكلك العميقة</div>
 
-        <div class="row" style="gap:8px">
-          <label class="pill free" id="pill-free"><input type="radio" name="plan" id="opt-free" checked> استشارة مجانية</label>
-          <label class="pill paid" id="pill-paid"><input type="radio" name="plan" id="opt-paid"> استشارة مدفوعة</label>
+        <div class="row" style="gap:8px; margin-top:16px;">
+          <label class="pill free" id="pill-free"><input type="radio" name="plan" id="opt-free" checked> بداية ذكية (15 دقيقة مجانية)</label>
+          <label class="pill paid" id="pill-paid"><input type="radio" name="plan" id="opt-paid"> <b>حل متكامل (60 دقيقة + متابعة)</b></label>
         </div>
 
         <div class="grid2" style="margin-top:10px">
           <div>
-            <div class="mini">التاريخ (بتوقيت مكة) <span class="note-red">— اختر تاريخًا بعد اليوم (الحجز بعد 24 ساعة على الأقل)</span></div>
+            <div class="mini">التاريخ (بتوقيت مكة)</div>
             <input type="date" id="date" inputmode="none" autocomplete="off">
-            <div class="note-red">لا يُسمح بالحجز بتاريخ اليوم أو أي تاريخ سابق.</div>
+            <div class="note-red">الحجز بعد 24 ساعة على الأقل</div>
           </div>
           <div>
-            <div class="mini">الوقت</div>
+            <div class="mini">الوقت المناسب لك</div>
             <select id="time">
-              <option value="12:00">12:00 ظهرًا</option>
-              <option value="13:00">1:00 مساءً</option>
-              <option value="14:00">2:00 مساءً</option>
-              <option value="15:00">3:00 مساءً</option>
-              <option value="16:00">4:00 مساءً</option>
-              <option value="17:00">5:00 مساءً</option>
-              <option value="18:00">6:00 مساءً</option>
+              <option value="07:00">7:00 صباحًا</option>
+              <option value="08:00">8:00 صباحًا</option>
+              <option value="09:00">9:00 صباحًا</option>
+              <option value="10:00">10:00 صباحًا</option>
               <option value="19:00">7:00 مساءً</option>
               <option value="20:00">8:00 مساءً</option>
               <option value="21:00">9:00 مساءً</option>
               <option value="22:00">10:00 مساءً</option>
+              <option value="23:00">11:00 مساءً</option>
             </select>
           </div>
         </div>
@@ -218,85 +236,85 @@
         </div>
 
         <div class="policy" style="margin-top:10px">
-          الدفع عبر الكريبتو فقط — <span id="show-pay2" class="linklike">USDT (TRC20)</span>.
+          الدفع عبر USDT (TRC20) — <span id="show-pay2" class="linklike" style="color:#ff7a00; cursor:pointer; font-weight:bold">عرض العنوان</span>
         </div>
         <div id="pay-hint2" class="usdt" style="display:none">
           <div class="mini">عنوان USDT (TRC20):</div>
           <div style="margin-top:6px">
             <code class="addr">TNtQDpBAXXrrfSP7T2vgFLV3uvQFvQVUUf</code>
-            <button class="ghost" id="copy-usdt" style="margin-inline-start:8px">نسخ العنوان</button>
+            <button class="ghost" id="copy-usdt" style="margin-inline-start:8px">نسخ</button>
           </div>
         </div>
 
         <div class="sep"></div>
 
         <div class="row">
-          <a id="wa-btn" class="cta" target="_blank" rel="noopener">إرسال رسالة واتساب</a>
-          <a id="tg-btn" class="ghost" href="https://t.me/sinanxch0" target="_blank" rel="noopener">إرسال رسالة تليجرام</a>
-          <a id="call-btn" class="ghost" href="tel:+447939893953">اتصال هاتفي</a>
+          <a id="wa-btn" class="cta" target="_blank" rel="noopener" style="flex:1; text-align:center; justify-content:center">
+            احجز الآن
+          </a>
+          <a id="tg-btn" class="ghost" href="https://t.me/sinanxch0" target="_blank" rel="noopener">تليجرام</a>
         </div>
 
-        <div class="policy">
-          • يمكن الإلغاء أو إعادة الجدولة قبل الموعد بـ12 ساعة.<br>
-          • تُلغى الجلسة تلقائيًا إذا تأخر العميل أكثر من 30 دقيقة.
+        <div class="policy" style="margin-top:16px;">
+          • البداية الذكية: لأول خطوة صحيحة في رحلتك<br>
+          • الحل الشامل: للخروج من العشوائية والتشتت والخسائر<br>
+          • المتابعة 48 ساعة: تضمن وصولك للنتائج المرجوة
         </div>
       </section>
 
-      <!-- FAQ بأسفل الصفحة (details/summary) -->
+      <!-- الأسئلة الشائعة -->
       <section id="faq" class="faq card" tabindex="0" style="margin-top:26px">
-        <h3>💬 الأسئلة الشائعة</h3>
+        <h3>❓ أسئلة تساعدك على الاختيار</h3>
 
         <details class="qa">
-          <summary class="qbtn">ما نوع الدعم الذي تقدّمه؟</summary>
-          <div class="ans"><p>مكالمات واتساب/تيليجرام + خطة طريق عملية قابلة للتنفيذ + متابعة نصية قصيرة بعد الجلسة ضمن أوقات العمل.</p></div>
+          <summary class="qbtn">متى أختار البداية المجانية؟</summary>
+          <div class="ans"><p>إذا كنت <b>في بداية رحلتك</b> وتريد بداية صحيحة، أو لديك <b>استفسارات محددة</b> تحتاج إجابات، أو تريد <b>تقييم مسارك الحالي</b> ومعرفة إذا كنت على الطريق الصحيح. البداية المجانية توفر لك الوقت والجهد في التجارب العشوائية.</p></div>
         </details>
 
         <details class="qa">
-          <summary class="qbtn">ما الفرق بين التوجيه الشخصي والمتابعة والمشاهدة فقط؟</summary>
-          <div class="ans"><p><b>التوجيه الشخصي:</b> جلسة 60 دقيقة مع تشخيص وخطة 3–5 خطوات + ملف PDF + متابعة نصية قصيرة. <br><b>المتابعة:</b> رسائل لاحقة مختصرة لتحديث التقدم وتعديلات بسيطة — ليست جلسة جديدة. <br><b>المشاهدة فقط:</b> تعلّم عام من يوتيوب بدون تخصيص أو متابعة فردية.</p></div>
+          <summary class="qbtn">متى أختار الحل المدفوع الشامل؟</summary>
+          <div class="ans"><p>إذا كنت <b>تعاني من العشوائية</b> في قراراتك، أو <b>تشعر بالتشتت</b> ولا تعرف توجهك، أو <b>تعاني من خسائر مستمرة</b>، أو تحتاج <b>خطة واضحة ومتابعة شخصية</b> تضمن وصولك لهدفك. هذا الحل ينقذك من الخسائر الكبيرة ويوفر عليك وقتاً طويلاً.</p></div>
         </details>
 
         <details class="qa">
-          <summary class="qbtn">هل أقدر أحقق دخل فعلاً من التداول؟</summary>
-          <div class="ans"><p>ممكن، لكن ليس وعدًا. النجاح يعتمد على التزامك بالخطة، إدارة المخاطر، وسجل ممارسة منضبط. دوري أن أختصر الطريق وأبني لك إطارًا عمليًا.</p></div>
+          <summary class="qbtn">هل 49$ تستحق مقابل هذا الحل؟</summary>
+          <div class="ans"><p>فكر في <b>كم خسرت من التجارب العشوائية؟</b> 49$ هي <b>استثمار صغير</b> مقارنة بما يمكن أن تخسره من قرارات خاطئة. هذا الحل يوفر عليك <b>آلاف الدولارات</b> من الخسائر المستقبلية، ويعطيك <b>خطة واضحة</b> تضمن وصولك لهدفك.</p></div>
         </details>
 
         <details class="qa">
-          <summary class="qbtn">ماذا سأحصل عليه في الجلسة المدفوعة؟</summary>
-          <div class="ans"><p>تشخيص واضح لمشكلتك، خارطة طريق من 3–5 خطوات قابلة للتنفيذ، تنظيم مهامك اليومية/الأسبوعية، ملف PDF بالخلاصة، ومتابعة نصية قصيرة بعد الجلسة.</p></div>
+          <summary class="qbtn">ماذا تعني متابعة 48 ساعة؟</summary>
+          <div class="ans"><p>أكون <b>متاحاً لك شخصياً</b> عبر واتساب لمدة 48 ساعة بعد الجلسة. أجيب على أسئلتك التنفيذية، <b>أتابع تقدمك</b>، وأساعدك في <b>تجاوز أي عقبات</b> تواجهك أثناء تطبيق الخطة. هذه المتابعة تضمن <b>نجاح تطبيقك</b> للخطة ووصولك للنتائج.</p></div>
+        </details>
+
+        <details class="qa">
+          <summary class="qbtn">هل يمكنني البدء بالمجانية ثم الترقية للمدفوعة؟</summary>
+          <div class="ans"><p>نعم بالتأكيد! العديد يبدأ بالجلسة المجانية ليحدد إذا كان يحتاج الحل الشامل. المجانية تساعدك <b>تقييم احتياجك</b>، وإذا اكتشفت أنك تحتاج حلاً أعمق، يمكنك <b>الترقية مباشرة</b> بعد الجلسة المجانية.</p></div>
         </details>
 
         <details class="qa">
           <summary class="qbtn">كيف أدفع؟</summary>
-          <div class="ans"><p>الدفع عبر الكريبتو فقط <b>USDT (TRC20)</b>. تحتاج إلى محفظة TRC20 (مثل TronLink/OKX/Bybit...) ثم تحويل المبلغ وإرسال <b>TxID</b> أو لقطة التحويل في واتساب.</p></div>
+          <div class="ans"><p>USDT (TRC20) فقط - <b>أسرع وأأمن طريقة</b>. تحتاج محفظة تدعم شبكة TRON مثل TronLink أو OKX أو Bybit.</p></div>
         </details>
 
         <div class="faq-foot">
-          لبقية الأسئلة مثل اللغة أو الخصوصية، تواصل عبر
-          <a href="https://wa.me/447939893953" target="_blank" rel="noopener">واتساب</a> أو
-          <a href="https://t.me/sinanxch0" target="_blank" rel="noopener">تيليجرام</a>.
+          لأسئلة أخرى: <a href="https://wa.me/447939893953" target="_blank" rel="noopener">واتساب</a> أو <a href="https://t.me/sinanxch0" target="_blank" rel="noopener">تيليجرام</a>
         </div>
       </section>
     </main>
 
-    <p class="footer">هذه الصفحة مخصصة لحجز الاستشارات مباشرة عبر واتساب أو تليجرام.</p>
+    <p class="footer">اختر بدايتك بحكمة - سواء بداية ذكية مجانية أو حل متكامل لمشاكلك</p>
   </div>
 
-  <!-- زر واتساب عائم يفتح واتساب مباشرة برسالة تمهيدية -->
-  <a class="float-wa" target="_blank" rel="noopener"
-     href="https://wa.me/447939893953?text=%D9%85%D8%B1%D8%AD%D8%A8%D9%8B%D8%A7%20%D8%B3%D9%86%D8%A7%D9%86%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%A7%D9%84%D8%AA%D8%AD%D8%AF%D8%AB%20%D8%AD%D9%88%D9%84%20%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D8%B4%D8%A7%D8%B1%D8%A7%D8%AA.">💬 واتساب مباشر</a>
+  <a href="#book" class="float-wa">💬 احجز عبر واتساب</a>
 
   <script>
-    // JS flag
     document.documentElement.classList.add('js');
 
-    // spotlight mouse (desktop)
     document.addEventListener('mousemove', (e)=>{
       document.documentElement.style.setProperty('--mx', e.clientX + 'px');
       document.documentElement.style.setProperty('--my', e.clientY + 'px');
     });
 
-    // ---- إعدادات عامة ----
     const num = "447939893953";
     const tg = "https://t.me/sinanxch0";
     const usdtAddr = "TNtQDpBAXXrrfSP7T2vgFLV3uvQFvQVUUf";
@@ -305,7 +323,6 @@
     const optPaid = document.getElementById('opt-paid');
     const pillFree = document.getElementById('pill-free');
     const pillPaid = document.getElementById('pill-paid');
-
     const dateEl = document.getElementById('date');
     const timeEl = document.getElementById('time');
     const nameEl = document.getElementById('name');
@@ -317,48 +334,91 @@
     const payHint1 = document.getElementById('pay-hint1');
     const payHint2 = document.getElementById('pay-hint2');
 
-    function planWord(){ return optPaid.checked ? "استشارة مدفوعة — خارطة طريق" : "استشارة تمهيدية (مجانية)"; }
-    function fmtLocalYYYYMMDD(d){ const y=d.getFullYear(), m=String(d.getMonth()+1).padStart(2,'0'), da=String(d.getDate()).padStart(2,'0'); return `${y}-${m}-${da}`; }
+    let audioCtx = null;
+    function playConfirmSound() {
+      try {
+        if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        const oscillator = audioCtx.createOscillator();
+        const gainNode = audioCtx.createGain();
+        
+        oscillator.type = 'sine';
+        oscillator.frequency.value = 880;
+        
+        gainNode.gain.setValueAtTime(0.0001, audioCtx.currentTime);
+        gainNode.gain.exponentialRampToValueAtTime(0.22, audioCtx.currentTime + 0.02);
+        gainNode.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.20);
+        
+        oscillator.connect(gainNode);
+        gainNode.connect(audioCtx.destination);
+        
+        oscillator.start();
+        oscillator.stop(audioCtx.currentTime + 0.22);
+      } catch(e) {
+        console.log("Audio not supported");
+      }
+    }
 
-    // تعيين التاريخ الافتراضي للغد + منع نفس اليوم مع تنبيه
+    function planWord(){ 
+      if (optPaid.checked) {
+        return "🎯 الحل الشامل لمشاكلك في التداول (60 دقيقة + متابعة 48 ساعة) - 49$";
+      } else {
+        return "🚀 بداية ذكية في التداول (15 دقيقة مجانية)";
+      }
+    }
+    
+    function fmtLocalYYYYMMDD(d){ 
+      const y = d.getFullYear();
+      const m = String(d.getMonth() + 1).padStart(2, '0');
+      const da = String(d.getDate()).padStart(2, '0');
+      return `${y}-${m}-${da}`;
+    }
+
     (function initDateMin(){
       const now = new Date();
       const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
-      const tomorrow = new Date(now.getFullYear(), now.getMonth(), now.getDate()+1);
-      dateEl.min = fmtLocalYYYYMMDD(today);   // نلتقط محاولة اختيار اليوم
-      dateEl.value = fmtLocalYYYYMMDD(tomorrow); // نعيّن الغد افتراضياً
+      const tomorrow = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1);
+      dateEl.min = fmtLocalYYYYMMDD(today);
+      dateEl.value = fmtLocalYYYYMMDD(tomorrow);
     })();
 
     function enforceNoSameDay(){
-      try{
+      try {
         const now = new Date();
         const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
-        const tomorrow = new Date(now.getFullYear(), now.getMonth(), now.getDate()+1);
+        const tomorrow = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1);
         const chosen = new Date(dateEl.value + 'T00:00');
         if (isNaN(chosen.getTime())) return;
-        if (chosen <= today){
-          alert('ممنوع طلب الاستشارة في نفس اليوم — يجب أن يكون الحجز بعد 24 ساعة على الأقل.');
+        if (chosen <= today) {
+          alert('يجب الحجز قبل 24 ساعة على الأقل');
           dateEl.value = fmtLocalYYYYMMDD(tomorrow);
         }
-      }catch(e){}
+      } catch(e) {}
     }
-    ['change','input','blur'].forEach(ev => dateEl.addEventListener(ev, ()=>{ enforceNoSameDay(); refresh(); }));
-    enforceNoSameDay();
-
+    
     function buildText(){
       const d = dateEl.value;
       const t = timeEl.value || "19:00";
       const name = (nameEl.value || "").trim();
-      let base = `${planWord()}\nالتاريخ: ${d}\nالوقت: ${t}`;
-      if(name) base += `\nالاسم: ${name}`;
+      
+      let base = `📋 طلب حجز استشارة تداول\n\n`;
+      base += `🎯 ${planWord()}\n`;
+      base += `📅 التاريخ: ${d}\n`;
+      base += `⏰ الوقت: ${t}\n`;
+      
+      if(name) base += `👤 الاسم: ${name}\n`;
+      
       if(optPaid.checked){
-        base += `\nالدفع: USDT (TRC20)\nالعنوان: ${usdtAddr}\nسأرسل لقطة التحويل/TxID بعد الإرسال.`;
-      }
-      if(optPaid.checked){
-        base += `\n🕒 المدة: مكالمة 60 دقيقة (مدفوعة)`;
+        base += `\n💰 المبلغ: 49$ (استثمار في حل مشاكلك)\n`;
+        base += `🔗 طريقة الدفع: USDT (TRC20)\n`;
+        base += `📍 العنوان: ${usdtAddr}\n`;
+        base += `\n🎯 أنا جاهز للبدء في حل مشاكلي في التداول`;
       } else {
-        base += `\n🕒 المدة: مكالمة 15 دقيقة (مجانية)`;
+        base += `\n🚀 أريد بداية ذكية في رحلتي في التداول\n`;
+        base += `💡 أتطلع لمعرفة أول خطوة صحيحة أنطلق منها`;
       }
+      
+      base += `\n\n📞 للتواصل: ${num}`;
+      
       return base;
     }
 
@@ -369,72 +429,117 @@
       tgBtn.href = `${tg}?text=${text}`;
       pillFree.classList.toggle('selected', optFree.checked);
       pillPaid.classList.toggle('selected', optPaid.checked);
+      
+      if (optPaid.checked) {
+        waBtn.textContent = "🎯 احجز الحل الشامل";
+        playConfirmSound();
+      } else {
+        waBtn.textContent = "🚀 احجز البداية المجانية";
+      }
     }
 
-    function toggle(el){ el.style.display = (el.style.display==='none' || !el.style.display)? 'block':'none'; }
+    function toggle(el){ 
+      el.style.display = (el.style.display === 'none' || !el.style.display) ? 'block' : 'none'; 
+    }
 
-    [optFree,optPaid,dateEl,timeEl,nameEl].forEach(el=> el.addEventListener('change', refresh));
-    if(copyUsdt){ copyUsdt.addEventListener('click', ()=>{ navigator.clipboard.writeText(usdtAddr); copyUsdt.textContent='تم النسخ ✓'; setTimeout(()=>copyUsdt.textContent='نسخ العنوان',1100); }); }
-    if(showPay1){ showPay1.addEventListener('click', ()=> toggle(payHint1)); }
-    if(showPay2){ showPay2.addEventListener('click', ()=> toggle(payHint2)); }
+    optFree.addEventListener('change', refresh);
+    
+    optPaid.addEventListener('change', function() {
+      if (this.checked) {
+        playConfirmSound();
+      }
+      refresh();
+    });
 
-    // تمرير تلقائي للحجز عند التحميل
+    [dateEl, timeEl, nameEl].forEach(el => el.addEventListener('change', refresh));
+    
+    if(copyUsdt){ 
+      copyUsdt.addEventListener('click', ()=>{ 
+        navigator.clipboard.writeText(usdtAddr); 
+        copyUsdt.textContent = 'تم النسخ ✓';
+        setTimeout(() => copyUsdt.textContent = 'نسخ', 1500);
+      }); 
+    }
+    
+    if(showPay1){ showPay1.addEventListener('click', () => toggle(payHint1)); }
+    if(showPay2){ showPay2.addEventListener('click', () => toggle(payHint2)); }
+
     window.addEventListener('load', () => {
       if (!location.hash) {
         const b = document.getElementById('book');
-        if (b && b.scrollIntoView) { b.scrollIntoView({behavior:'smooth'}); }
+        if (b && b.scrollIntoView) { 
+          b.scrollIntoView({ behavior: 'smooth' }); 
+        }
       }
     });
 
-    // تبديل الخطة من البطاقات + صوت تأكيد عند اختيار المدفوعة
     const ctaPaid = document.getElementById('cta-paid');
     const ctaFree2 = document.getElementById('cta-free');
-    if (ctaPaid) { ctaPaid.addEventListener('click', ()=>{ optPaid.checked = true; optFree.checked = false; playConfirm(); refresh(); }); }
-    if (ctaFree2) { ctaFree2.addEventListener('click', ()=>{ optFree.checked = true; optPaid.checked = false; refresh(); }); }
-
-    let audioCtx = null;
-    function playConfirm(){
-      try{
-        if (!audioCtx) audioCtx = new (window.AudioContext||window.webkitAudioContext)();
-        const o = audioCtx.createOscillator();
-        const g = audioCtx.createGain();
-        o.type = 'sine'; o.frequency.value = 880;
-        g.gain.setValueAtTime(0.0001, audioCtx.currentTime);
-        g.gain.exponentialRampToValueAtTime(0.22, audioCtx.currentTime + 0.02);
-        g.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.20);
-        o.connect(g); g.connect(audioCtx.destination);
-        o.start(); o.stop(audioCtx.currentTime + 0.22);
-      }catch(e){}
+    if (ctaPaid) { 
+      ctaPaid.addEventListener('click', (e) => { 
+        e.preventDefault();
+        optPaid.checked = true; 
+        optFree.checked = false; 
+        playConfirmSound();
+        refresh();
+        document.getElementById('book').scrollIntoView({ behavior: 'smooth' });
+      }); 
     }
-    optPaid.addEventListener('change', ()=>{ if (optPaid.checked) playConfirm(); });
+    if (ctaFree2) { 
+      ctaFree2.addEventListener('click', (e) => { 
+        e.preventDefault();
+        optFree.checked = true; 
+        optPaid.checked = false; 
+        refresh();
+        document.getElementById('book').scrollIntoView({ behavior: 'smooth' });
+      }); 
+    }
 
-    // Scroll Reveal
-    function revealAll(){ document.querySelectorAll('.card').forEach(el=> el.classList.add('revealed')); }
+    ['change', 'input', 'blur'].forEach(ev => dateEl.addEventListener(ev, ()=>{ enforceNoSameDay(); refresh(); }));
+    enforceNoSameDay();
+
+    function revealAll(){ 
+      document.querySelectorAll('.card').forEach(el => el.classList.add('revealed')); 
+    }
+    
     if ('IntersectionObserver' in window){
-      const observer = new IntersectionObserver((entries)=>{
-        entries.forEach(entry=>{ if(entry.isIntersecting){ entry.target.classList.add('revealed'); observer.unobserve(entry.target);} });
-      }, {root:null, rootMargin:"0px 0px -10% 0px", threshold:0.1});
-      document.querySelectorAll('.card').forEach(el=> observer.observe(el));
-      setTimeout(()=>{ const anyHidden = Array.from(document.querySelectorAll('.card')).some(el=> !el.classList.contains('revealed')); if(anyHidden) revealAll(); }, 2000);
-    } else { revealAll(); }
-
-    // رفع البطاقات على اللمس/الماوس
-    function bindCardLift(){
-      document.querySelectorAll('.card').forEach(card=>{
-        ['pointerdown','mousedown','touchstart'].forEach(ev=>{
-          card.addEventListener(ev, ()=> card.classList.add('card-active'), {passive:true});
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => { 
+          if(entry.isIntersecting){ 
+            entry.target.classList.add('revealed'); 
+            observer.unobserve(entry.target);
+          } 
         });
-        ['pointerup','mouseup','mouseleave','touchend','touchcancel','blur'].forEach(ev=>{
-          card.addEventListener(ev, ()=> card.classList.remove('card-active'), {passive:true});
+      }, { root: null, rootMargin: "0px 0px -10% 0px", threshold: 0.1 });
+      
+      document.querySelectorAll('.card').forEach(el => observer.observe(el));
+      
+      setTimeout(() => { 
+        const anyHidden = Array.from(document.querySelectorAll('.card')).some(el => !el.classList.contains('revealed')); 
+        if(anyHidden) revealAll(); 
+      }, 2000);
+    } else { 
+      revealAll(); 
+    }
+
+    function bindCardLift(){
+      document.querySelectorAll('.card').forEach(card => {
+        ['pointerdown', 'mousedown', 'touchstart'].forEach(ev => {
+          card.addEventListener(ev, () => card.classList.add('card-active'), { passive: true });
+        });
+        ['pointerup', 'mouseup', 'mouseleave', 'touchend', 'touchcancel', 'blur'].forEach(ev => {
+          card.addEventListener(ev, () => card.classList.remove('card-active'), { passive: true });
         });
       });
     }
     bindCardLift();
 
-    // تأثير tap للأزرار في الهيدر
-    document.querySelectorAll('header .row .cta, header .row .ghost').forEach(btn=>{
-      ['pointerdown','touchstart'].forEach(ev=>{
-        btn.addEventListener(ev, ()=>{ btn.classList.add('tapped'); setTimeout(()=>btn.classList.remove('tapped'), 220); }, {passive:true});
+    document.querySelectorAll('header .row .cta, header .row .ghost').forEach(btn => {
+      ['pointerdown', 'touchstart'].forEach(ev => {
+        btn.addEventListener(ev, () => { 
+          btn.classList.add('tapped'); 
+          setTimeout(() => btn.classList.remove('tapped'), 220); 
+        }, { passive: true });
       });
     });
 
