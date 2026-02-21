@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>سنان - مصادر تعلم التحليل الفني</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0e0f10;
+      --panel:#15171a;
+      --panel-2:#1b1e22;
+      --text:#f2f2f3;
+      --muted:#b7bdc6;
+      --brand:#ff6a00;
+      --brand2:#ff7f22;
+      --stroke:#262a30;
+      --radius:14px;
+      --shadow:0 8px 24px rgba(0,0,0,.35);
+    }
+    *{box-sizing:border-box}
+    html,body{background:var(--bg); color:var(--text); margin:0; font-family:"Cairo",system-ui; -webkit-font-smoothing:antialiased}
+    .wrap{max-width:1024px;margin:24px auto;padding:0 16px}
+    
+    /* Header */
+    header{position:sticky; top:0; z-index:5; background:linear-gradient(180deg,#0e0f10 60%,rgba(14,15,16,.7)100%); backdrop-filter:saturate(140%) blur(6px); border-bottom:1px solid var(--stroke)}
+    .nav{display:flex; align-items:center; justify-content:space-between; max-width:1024px; margin:0 auto; padding:14px 16px}
+    .brand{display:flex; align-items:center; gap:12px; font-weight:800; letter-spacing:.2px}
+    .sa{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;background:var(--brand);color:#fff;box-shadow:0 6px 16px rgba(255,106,0,.35)}
+    
+    /* Hero Section */
+    .hero{margin:20px auto 18px;padding:18px;background:linear-gradient(135deg, rgba(255,106,0,.1) 0%, rgba(255,106,0,0) 60%);border:1px solid var(--stroke);border-radius:var(--radius);text-align:center}
+    .hero h1{margin:4px 0 8px;font-size:28px}
+    .hero p{margin:0;color:var(--muted);font-size:16px}
+    
+    /* Cards */
+    .card{background:linear-gradient(180deg,var(--panel),var(--panel-2));border:1px solid var(--stroke);border-radius:var(--radius);box-shadow:var(--shadow);padding:20px;margin-top:20px}
+    .card h2{margin:6px 0 16px;font-size:22px;color:var(--brand2);border-right:4px solid var(--brand);padding-right:12px}
+    
+    /* Resource Grid - 3 روابط */
+    .resource-grid{display:grid;gap:20px;grid-template-columns:1fr;margin-top:20px}
+    @media(min-width:768px){ .resource-grid{grid-template-columns:1fr 1fr 1fr} }
+    
+    .resource-item{background:rgba(255,106,0,.05);border:1px solid rgba(255,106,0,.15);border-radius:12px;padding:20px;transition:transform .2s;height:100%;display:flex;flex-direction:column}
+    .resource-item:hover{transform:translateY(-4px);border-color:var(--brand);background:rgba(255,106,0,.1)}
+    
+    .resource-icon{font-size:32px;margin-bottom:12px}
+    .resource-title{font-weight:700;font-size:18px;margin-bottom:8px;color:var(--brand2)}
+    .resource-source{color:var(--muted);font-size:13px;margin-bottom:12px;display:flex;align-items:center;gap:5px}
+    .resource-source span{background:rgba(255,106,0,.2);padding:3px 8px;border-radius:4px;color:var(--brand2)}
+    .resource-desc{color:var(--muted);font-size:14px;margin-bottom:16px;line-height:1.7;flex:1}
+    .resource-link{display:inline-flex;align-items:center;gap:8px;background:var(--brand);color:#fff;padding:10px 18px;border-radius:8px;text-decoration:none;font-weight:600;font-size:14px;transition:background .2s;width:fit-content;margin-top:auto}
+    .resource-link:hover{background:var(--brand2)}
+    
+    /* Telegram Card فقط (الأزرق) */
+    .telegram-card{background:linear-gradient(135deg, rgba(0,136,204,.15) 0%, rgba(0,136,204,0) 80%);border:2px solid #0088cc;border-radius:var(--radius);padding:25px;margin-top:40px;text-align:center}
+    .telegram-title{color:#0088cc;font-size:24px;margin-bottom:15px;font-weight:800}
+    .telegram-text{color:var(--muted);font-size:16px;margin-bottom:25px;line-height:1.8}
+    .telegram-button{display:inline-flex;align-items:center;gap:10px;background:#0088cc;color:#fff;padding:14px 30px;border-radius:50px;text-decoration:none;font-weight:700;font-size:16px;transition:background .2s}
+    .telegram-button:hover{background:#006699}
+    
+    /* Footer */
+    .foot{margin:40px 0 30px; padding:16px;border-radius:12px; background:rgba(255,106,0,.1); border:1px solid rgba(255,106,0,.2); text-align:center; color:#fff; font-weight:700}
+    
+    /* Premium Badge */
+    .premium-badge{background:linear-gradient(135deg, #ffd70020, #ffa50020);border:2px solid gold;border-radius:50px;padding:8px 16px;display:inline-block;color:gold;font-weight:700;font-size:13px;margin-bottom:12px}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav">
+      <div class="brand">
+        <div class="sa">SA</div>
+        <div>سنان - مصادر التعلم</div>
+      </div>
+    </div>
+  </header>
+
+  <div class="wrap">
+    <!-- Hero Section -->
+    <section class="hero">
+      <h1>📚 مصادر تعلم التحليل الفني</h1>
+      <p>ثلاثة مصادر أساسية لتبدأ رحلة التعلم مع سنان</p>
+    </section>
+
+    <!-- 3 روابط فقط -->
+    <div class="resource-grid">
+      
+      <!-- الرابط 1: التحليل الفني الكلاسيكي -->
+      <div class="resource-item">
+        <div class="resource-icon">📊</div>
+        <div class="resource-title">التحليل الفني الكلاسيكي</div>
+        <div class="resource-source">
+          <span>🎬 قائمة تشغيل</span>
+        </div>
+        <div class="resource-desc">
+          تعلم أساسيات التحليل الفني الكلاسيكي: الدعم والمقاومة، المؤشرات، الأنماط السعرية، والشموع اليابانية
+        </div>
+        <a href="https://www.youtube.com/watch?v=MfyDYGqbTKU&list=PLD79bwt4_CsWaKu07bcsYIxwmv2QUNjDp" target="_blank" class="resource-link">
+          <span>▶️</span> مشاهدة القائمة
+        </a>
+      </div>
+      
+      <!-- الرابط 2: تحليل ICT -->
+      <div class="resource-item">
+        <div class="resource-icon">🧠</div>
+        <div class="resource-title">تحليل ICT</div>
+        <div class="resource-source">
+          <span>🎬 قائمة تشغيل</span>
+        </div>
+        <div class="resource-desc">
+          تعلم منهجية Inner Circle Trader والتحيز الشهري والأسبوعي. شرح متعمق للمفاهيم المتقدمة
+        </div>
+        <a href="https://www.youtube.com/watch?v=_PpHuA78bvY&list=PLbO7aNJGGlDV7t2X3wnuXwEYTHCbk4Jir" target="_blank" class="resource-link">
+          <span>▶️</span> مشاهدة القائمة
+        </a>
+      </div>
+      
+      <!-- الرابط 3: التحليل الموجي المطور (مدفوع - مجاني للمتابعين) -->
+      <div class="resource-item">
+        <div class="resource-icon">📈</div>
+        <div class="premium-badge">💎 كورس مدفوع</div>
+        <div class="resource-title">التحليل الموجي المطور</div>
+        <div class="resource-source">
+          <span>✈️ تلجرام سنان</span>
+        </div>
+        <div class="resource-desc">
+          <strong>هذا الكورس مدفوع</strong>، ولكن سأقدمه لكم بشكل مجاني 💝<br>
+          يجب عليك أن تكلمني على الخاص في التلجرام وتطلب الكورس
+        </div>
+        <a href="https://t.me/sinanxch0" target="_blank" class="resource-link">
+          <span>✈️</span> راسلني على التلجرام
+        </a>
+      </div>
+      
+    </div>
+
+    <!-- فقط الكارت الأزرق - تم إزالة البرتقالي -->
+    <div class="telegram-card">
+      <div class="telegram-title">🎁 كورس الموجي المطور - مجاني للمتابعين</div>
+      <div class="telegram-text">
+        <strong>⚠️ هذا الكورس مدفوع الثمن</strong><br>
+        ولكنه <strong>مجاني</strong> لكل متابعيني 💝<br><br>
+        <span style="font-size: 18px;">👇</span>
+      </div>
+      
+      <a href="https://t.me/sinanxch0" target="_blank" class="telegram-button">
+        <span>✈️</span> راسلني على التلجرام
+      </a>
+      
+      <div style="margin-top: 20px; color: var(--muted); font-size: 14px; background: rgba(0,0,0,0.3); padding: 10px; border-radius: 8px;">
+        <strong>الخطوات:</strong> اضغط الزر ← راسلني على الخاص ← اكتب "أريد كورس الموجي المطور" ← بأرسله لك فوراً
+      </div>
+    </div>
+
+    <!-- روابط سريعة (نفس الثلاثة) -->
+    <div class="card">
+      <h2>🔗 الروابط مباشرة</h2>
+      <div style="display:flex;flex-direction:column;gap:15px;">
+        <a href="https://www.youtube.com/watch?v=MfyDYGqbTKU&list=PLD79bwt4_CsWaKu07bcsYIxwmv2QUNjDp" target="_blank" style="color:var(--brand2);text-decoration:none;padding:10px;border-bottom:1px solid var(--stroke);display:flex;align-items:center;gap:10px">
+          <span>📊</span> التحليل الفني الكلاسيكي - قائمة تشغيل (مجاني)
+        </a>
+        <a href="https://www.youtube.com/watch?v=_PpHuA78bvY&list=PLbO7aNJGGlDV7t2X3wnuXwEYTHCbk4Jir" target="_blank" style="color:var(--brand2);text-decoration:none;padding:10px;border-bottom:1px solid var(--stroke);display:flex;align-items:center;gap:10px">
+          <span>🧠</span> تحليل ICT - قائمة تشغيل (مجاني)
+        </a>
+        <a href="https://t.me/sinanxch0" target="_blank" style="color:var(--brand2);text-decoration:none;padding:10px;display:flex;align-items:center;gap:10px;background:rgba(255,215,0,0.1);border-radius:8px;">
+          <span>📈💰</span> التحليل الموجي المطور - راسلني على التلجرام (مدفوع - مجاني للمتابعين)
+        </a>
+      </div>
+    </div>
+
+    <div class="foot">
+      تم إعداد هذه الصفحة بواسطة <b>سنان أحمد</b> · @sinanxch0 · الكورس الموجي المطور مجاني للمتابعين
+    </div>
+  </div>
+</body>
+</html>
