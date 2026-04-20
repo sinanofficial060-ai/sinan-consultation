@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Naima | الخطة التعليمية</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #0A0A0A;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            color: #EAEAEA;
+            direction: rtl;
+            padding: 1rem;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* ألوان الخطوات */
+        .step-1 .step-title { border-right-color: #D4AF37; }
+        .step-1 .step-title i { color: #D4AF37; }
+        .step-1 .progress-fill { background: #D4AF37; }
+        .step-1 .btn-link { background: #D4AF37; color: #0A0A0A; }
+
+        .step-2 .step-title { border-right-color: #FF8C00; }
+        .step-2 .step-title i { color: #FF8C00; }
+        .step-2 .progress-fill { background: #FF8C00; }
+        .step-2 .btn-link { background: #FF8C00; color: #0A0A0A; }
+
+        .step-3 .step-title { border-right-color: #1E90FF; }
+        .step-3 .step-title i { color: #1E90FF; }
+        .step-3 .progress-fill { background: #1E90FF; }
+        .step-3 .btn-link { background: #1E90FF; color: #0A0A0A; }
+
+        .step {
+            background: #1A1A1A;
+            border-radius: 20px;
+            margin-bottom: 1.2rem;
+            overflow: hidden;
+            border: 1px solid #2C2C2C;
+        }
+        .step-title {
+            background: #111;
+            padding: 0.8rem 1rem;
+            font-size: 1rem;
+            font-weight: bold;
+            border-right: 3px solid;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .step-title i {
+            margin-left: 6px;
+        }
+
+        .step-content {
+            padding: 0.8rem 1rem;
+        }
+
+        /* زر الرابط */
+        .btn-link {
+            display: inline-block;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: bold;
+            text-decoration: none;
+            margin-bottom: 12px;
+            text-align: center;
+        }
+
+        /* المهام */
+        .mission {
+            margin-top: 0.5rem;
+        }
+        .mission-name {
+            font-size: 0.85rem;
+            font-weight: bold;
+            margin: 0.8rem 0 0.5rem 0;
+        }
+        .step-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #111;
+            padding: 0.6rem 0.8rem;
+            margin-bottom: 0.5rem;
+            border-radius: 14px;
+        }
+        .step-text {
+            font-size: 0.75rem;
+            flex: 1;
+            padding-left: 8px;
+        }
+        .step-actions {
+            display: flex;
+            gap: 12px;
+        }
+        .step-actions button {
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+            padding: 0 4px;
+        }
+        .btn-ok { color: #4caf50; }
+        .btn-no { color: #f44336; }
+        
+        .progress-bar {
+            height: 4px;
+            background: #2C2C2C;
+            border-radius: 4px;
+            margin: 8px 0 4px;
+            overflow: hidden;
+        }
+        .progress-fill {
+            width: 0%;
+            height: 100%;
+        }
+        .percent {
+            font-size: 0.6rem;
+            text-align: left;
+        }
+        .note-under {
+            font-size: 0.6rem;
+            color: #bbb;
+            margin-top: 4px;
+            padding-right: 0.5rem;
+            border-right: 2px solid;
+        }
+        .reset {
+            background: none;
+            border: 1px solid #444;
+            color: #aaa;
+            font-size: 0.6rem;
+            padding: 2px 10px;
+            border-radius: 20px;
+            margin-top: 6px;
+            cursor: pointer;
+        }
+        footer {
+            font-size: 0.6rem;
+            text-align: center;
+            color: #666;
+            margin-top: 1.5rem;
+        }
+        /* توقيع سنان أحمد */
+        .signature {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid #333;
+            font-size: 0.7rem;
+            color: #888;
+            direction: ltr;
+        }
+        .signature span {
+            color: #D4AF37;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header" style="text-align:center; margin-bottom:1.5rem; border-bottom:2px solid #D4AF37; padding-bottom:0.5rem;">
+        <h1 style="font-size:1.3rem; color:#D4AF37;"><i class="fas fa-graduation-cap"></i> خطة التعليم</h1>
+        <p style="font-size:0.7rem; color:#aaa;">3 خطوات | حفظ تلقائي | الأزواج: EURUSD - GBPUSD</p>
+    </div>
+
+    <div id="app"></div>
+    
+    <!-- توقيع سنان أحمد وتاريخ 2026-4-20 مع اسم Naima Ghatur -->
+    <div class="signature">
+        This work was done by <span>Sanan Ahmed</span> for <span>Naima Ghatur</span> on <span>2026-4-20</span>
+    </div>
+    
+    <footer><i class="fas fa-save"></i> تقدمك محفوظ | اضغط ✓ أو ✗</footer>
+</div>
+
+<script>
+    const stepsData = [
+        {
+            id: 1,
+            name: "❶ التحليل الفني",
+            colorClass: "step-1",
+            linkText: "🎬 رابط المستوى الأول",
+            linkUrl: "https://youtube.com/playlist?list=PLbO7aNJGGlDV7t2X3wnuXwEYTHCbk4Jir&si=_Rpwt2fAYIypJimt",
+            notes: [
+                "المستوى الأول فقط: مشاهدة كل الفيديوهات ثم التطبيق أسبوع كامل",
+                "التطبيق على الشارت + الإشارة (كل مفاهيم التحليل الفني)",
+                "التركيز على: التحيز الأسبوعي على EURUSD و GBPUSD"
+            ],
+            extraNote: "⭐ المستوى الثاني (لزيادة القيمة) متاح بعد إتقان الأول",
+            tasks: [
+                { name: "📺 مشاهدة المستوى الأول", steps: ["مشاهدة كل الفيديوهات"] },
+                { name: "⚡ تطبيق على الشارت + الإشارة", steps: ["تطبيق كل المفاهيم لمدة أسبوع"] },
+                { name: "🎯 التحيز الأسبوعي", steps: ["تطبيق التحيز على EURUSD + GBPUSD لمدة أسبوع"] }
+            ]
+        },
+        {
+            id: 2,
+            name: "❷ إدارة المخاطر",
+            colorClass: "step-2",
+            linkText: "🎥 رابط فيديو إدارة المخاطر",
+            linkUrl: "https://youtu.be/sTqDxTtCak0?si=NgwHcdAVnq4UEc1H",
+            notes: [
+                "مثال: المخاطرة 50$ لكل صفقة (حوالي 15% من 350$)",
+                "مثال: الهدف 20 نقطة، وقف الخسارة 10 نقاط (نسبة 1:2)"
+            ],
+            extraNote: "",
+            tasks: [
+                { name: "⚖️ تحديد القواعد", steps: ["تحديد المخاطرة لكل صفقة", "تحديد الربح المستهدف"] }
+            ]
+        },
+        {
+            id: 3,
+            name: "❸ العامل النفسي",
+            colorClass: "step-3",
+            linkText: "🧠 رابط فيديو العامل النفسي",
+            linkUrl: "https://youtu.be/XlZYovBdRMA?si=hKi8YsRCTdth_RcG",
+            notes: [
+                "سجل في دفتر: الخوف - الجشع - الالتزام بالخطة",
+                "مثال: لا تتداول بعد خسارتين متتاليتين"
+            ],
+            extraNote: "",
+            tasks: [
+                { name: "🧠 تسجيل وتحليل", steps: ["مشاهدة الفيديو", "تسجيل كل شيء مهم"] }
+            ]
+        }
+    ];
+
+    let state = {};
+
+    function load() {
+        let saved = localStorage.getItem("naima_colors_v1");
+        if(saved) state = JSON.parse(saved);
+        else {
+            stepsData.forEach(step => {
+                step.tasks.forEach((task, ti) => {
+                    task.steps.forEach((_, si) => {
+                        state[`${step.id}-${ti}-${si}`] = false;
+                    });
+                });
+            });
+        }
+    }
+
+    function save() {
+        localStorage.setItem("naima_colors_v1", JSON.stringify(state));
+    }
+
+    function getProgress(stepId, taskIdx) {
+        const task = stepsData.find(s => s.id === stepId).tasks[taskIdx];
+        let done = 0;
+        task.steps.forEach((_, si) => {
+            if(state[`${stepId}-${taskIdx}-${si}`]) done++;
+        });
+        return (done / task.steps.length) * 100;
+    }
+
+    function render() {
+        const app = document.getElementById("app");
+        app.innerHTML = "";
+
+        stepsData.forEach(step => {
+            const stepDiv = document.createElement("div");
+            stepDiv.className = `step ${step.colorClass}`;
+
+            stepDiv.innerHTML = `
+                <div class="step-title">
+                    <span><i class="fas fa-chalkboard-user"></i> ${step.name}</span>
+                    <i class="fas fa-chevron-down" style="font-size:0.8rem;"></i>
+                </div>
+                <div class="step-content">
+                    <a href="${step.linkUrl}" target="_blank" class="btn-link">${step.linkText}</a>
+                    <div id="step-${step.id}"></div>
+                </div>
+            `;
+            app.appendChild(stepDiv);
+
+            const tasksContainer = stepDiv.querySelector(`#step-${step.id}`);
+            
+            step.tasks.forEach((task, ti) => {
+                const percent = getProgress(step.id, ti);
+                const taskDiv = document.createElement("div");
+                taskDiv.className = "mission";
+                taskDiv.innerHTML = `
+                    <div class="mission-name">📌 ${task.name}</div>
+                    <div id="task-${step.id}-${ti}"></div>
+                    <div class="progress-bar"><div class="progress-fill" style="width:${percent}%"></div></div>
+                    <div class="percent">${Math.round(percent)}%</div>
+                `;
+                tasksContainer.appendChild(taskDiv);
+
+                const stepsContainer = taskDiv.querySelector(`#task-${step.id}-${ti}`);
+                task.steps.forEach((stepText, si) => {
+                    const isDone = state[`${step.id}-${ti}-${si}`];
+                    const row = document.createElement("div");
+                    row.className = "step-row";
+                    row.innerHTML = `
+                        <div class="step-text"><i class="fas ${isDone ? 'fa-check-circle' : 'fa-circle'}" style="color:${isDone ? (step.id===1?'#D4AF37':step.id===2?'#FF8C00':'#1E90FF') : '#555'}; font-size:0.6rem;"></i> ${stepText}</div>
+                        <div class="step-actions">
+                            <button class="btn-ok" data-step="${step.id}-${ti}-${si}">✓</button>
+                            <button class="btn-no" data-step="${step.id}-${ti}-${si}">✗</button>
+                        </div>
+                    `;
+                    stepsContainer.appendChild(row);
+                });
+            });
+
+            // إضافة الملاحظات تحت العداد (بعد كل المهام)
+            const notesContainer = stepDiv.querySelector(".step-content");
+            step.notes.forEach(note => {
+                const noteDiv = document.createElement("div");
+                noteDiv.className = "note-under";
+                noteDiv.style.borderRightColor = step.id === 1 ? '#D4AF37' : (step.id === 2 ? '#FF8C00' : '#1E90FF');
+                noteDiv.innerHTML = `<i class="fas fa-info-circle"></i> ${note}`;
+                notesContainer.appendChild(noteDiv);
+            });
+            if(step.extraNote) {
+                const extraDiv = document.createElement("div");
+                extraDiv.className = "note-under";
+                extraDiv.style.borderRightColor = step.id === 1 ? '#D4AF37' : (step.id === 2 ? '#FF8C00' : '#1E90FF');
+                extraDiv.innerHTML = `<i class="fas fa-star"></i> ${step.extraNote}`;
+                notesContainer.appendChild(extraDiv);
+            }
+
+            // زر إعادة الضبط لكل مهمة على حدة
+            step.tasks.forEach((task, ti) => {
+                const resetBtn = document.createElement("button");
+                resetBtn.className = "reset";
+                resetBtn.setAttribute("data-reset", `${step.id}-${ti}`);
+                resetBtn.innerHTML = '<i class="fas fa-undo"></i> إعادة ضبط المهمة';
+                const taskDiv = tasksContainer.querySelector(`#task-${step.id}-${ti}`).parentNode;
+                taskDiv.appendChild(resetBtn);
+            });
+        });
+
+        attachEvents();
+    }
+
+    function attachEvents() {
+        document.querySelectorAll(".btn-ok").forEach(btn => {
+            btn.onclick = () => {
+                let key = btn.getAttribute("data-step");
+                state[key] = true;
+                save();
+                refresh();
+            };
+        });
+        document.querySelectorAll(".btn-no").forEach(btn => {
+            btn.onclick = () => {
+                let key = btn.getAttribute("data-step");
+                state[key] = false;
+                save();
+                refresh();
+            };
+        });
+        document.querySelectorAll(".reset").forEach(btn => {
+            btn.onclick = () => {
+                let val = btn.getAttribute("data-reset");
+                let [stepId, taskIdx] = val.split("-");
+                let task = stepsData.find(s => s.id == stepId).tasks[taskIdx];
+                if(confirm(`إعادة ضبط "${task.name}"؟`)) {
+                    task.steps.forEach((_, si) => {
+                        state[`${stepId}-${taskIdx}-${si}`] = false;
+                    });
+                    save();
+                    refresh();
+                }
+            };
+        });
+    }
+
+    function refresh() {
+        render();
+    }
+
+    load();
+    render();
+</script>
+</body>
+</html>
+```
